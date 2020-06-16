@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Injector } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import  { createCustomElement } from '@angular/elements';
+import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -12,6 +12,10 @@ import { MenuComponent } from './menu/menu.component';
 import { ModalDirective } from './directives/modal/modal.directive';
 import { DataDiriComponent } from './pages/data-diri/data-diri.component';
 import { OtpDirective } from './directives/otp/otp.directive';
+import { RingkasanComponent } from './pages/ringkasan/ringkasan.component';
+import { PembayaranComponent } from './pages/pembayaran/pembayaran.component';
+import { PanduanPembayaranComponent } from './pages/panduan-pembayaran/panduan-pembayaran.component';
+import { KonfirmasiComponent } from './pages/konfirmasi/konfirmasi.component';
 
 @NgModule({
   declarations: [
@@ -22,12 +26,17 @@ import { OtpDirective } from './directives/otp/otp.directive';
     ModalDirective,
     DataDiriComponent,
     OtpDirective,
+    RingkasanComponent,
+    PembayaranComponent,
+    PanduanPembayaranComponent,
+    KonfirmasiComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],

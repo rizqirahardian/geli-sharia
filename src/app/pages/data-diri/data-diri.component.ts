@@ -3,11 +3,14 @@ import { Component, OnInit, Input } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
 
 import { BeliPolis } from '../../services/models/models'
+import { HttpService } from '../../services/http/http.service'
+import { Config } from 'src/app/config';
 
 @Component({
   selector: 'app-data-diri',
   templateUrl: './data-diri.component.html',
-  styleUrls: ['./data-diri.component.css']
+  styleUrls: ['./data-diri.component.css'],
+  providers: [Config]
 })
 export class DataDiriComponent implements OnInit {
 
@@ -21,6 +24,7 @@ export class DataDiriComponent implements OnInit {
   onOtp: boolean
 
   constructor(
+    private http: HttpService,
     private modalService: NgbModal
   ) { }
 
@@ -50,6 +54,13 @@ export class DataDiriComponent implements OnInit {
 
   onResult(res) {
     console.log('otp result', res)
+    if (res) {
+      this.http.submitData(this.beliPolis).subscribe(res => {
+        console.log(res)
+      }, err => {
+        console.log(err)
+      })
+    }
   }
 
 }
