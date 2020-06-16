@@ -33,7 +33,6 @@ export class ProductsComponent implements OnInit {
 
   buyProduct() {
     this.router.navigate(['data-diri'], {
-      // queryParams: { productName: this.productName, premi: this.premi, manfaat: this.manfaat}
       state: { productName: this.productName, premi: this.premi, manfaat: this.manfaat}
     })
   }
