@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
 
@@ -11,13 +11,14 @@ import { BeliPolis } from '../../services/models/models'
 })
 export class DataDiriComponent implements OnInit {
 
+  @Input() otpResult = false
   beliPolis: BeliPolis
   intNumber: string
   nomorPemegangPolis: string
   status:string
   deklarasikesehatan: boolean
   syaratdanketentuan: boolean
-  closeResult: any
+  onOtp: boolean
 
   constructor(
     private modalService: NgbModal
@@ -30,6 +31,8 @@ export class DataDiriComponent implements OnInit {
     this.beliPolis.premi = history.state.premi
     this.beliPolis.manfaat = history.state.manfaat
     this.beliPolis.statusCT = 'Diri Sendiri'
+
+    this.onOtp = false
   }
 
   openModal(content, id) {
@@ -41,7 +44,12 @@ export class DataDiriComponent implements OnInit {
 
   submit() {
     this.beliPolis.nomorTelponPP = this.intNumber + this.nomorPemegangPolis
+    this.onOtp = true
     console.log(this.beliPolis)
+  }
+
+  onResult(res) {
+    console.log('otp result', res)
   }
 
 }

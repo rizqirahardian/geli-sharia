@@ -12,6 +12,6 @@ export class ModalDirective {
   @Input() premi
   @Input() manfaat
 
-  constructor(private activeModal: NgbActiveModal) { }
+  constructor() { }
 
 }

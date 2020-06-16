@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Injector } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import  { createCustomElement } from '@angular/elements';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -10,6 +11,7 @@ import { ProductsComponent } from './pages/products/products.component';
 import { MenuComponent } from './menu/menu.component';
 import { ModalDirective } from './directives/modal/modal.directive';
 import { DataDiriComponent } from './pages/data-diri/data-diri.component';
+import { OtpDirective } from './directives/otp/otp.directive';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,7 @@ import { DataDiriComponent } from './pages/data-diri/data-diri.component';
     MenuComponent,
     ModalDirective,
     DataDiriComponent,
+    OtpDirective,
   ],
   imports: [
     BrowserModule,
