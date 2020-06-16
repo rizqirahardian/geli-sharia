@@ -1,3 +1,11 @@
-<p>Masukkan 4 digit kode OTP untuk verifikasi data diri kamu</p>
-<input>
-<button (click)="verify(true)">klik</button>
+<div class="text-center">
+    <p class="card-title text-center">Masukkan 4 digit kode OTP untuk verifikasi data diri kamu</p>
+    <input type="text" class="form-control input-otp">
+</div>
+<div class="text-center m-20">
+    <button class="btn btn-danger" (click)="verify(true)">Kirim</button>
+</div>
+<div class="text-center">
+    <span>Tidak menerima Kode ?</span><br>
+    <span class="agree-otp">Kirim ulang kode OTP dalam</span><span> 01:59</span>
+</div>

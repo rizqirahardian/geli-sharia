@@ -1,3 +1,20 @@
 .xs-text {
     font-size: 70%;
 }
+
+.form-group label{
+    font-weight: 600;
+}
+
+.card-title{
+    color: #1071bd;
+    font-weight: 600;
+}
+
+
+.card-header{
+    background: white !important;
+    border: none !important;
+    text-align: center !important;
+}
+
