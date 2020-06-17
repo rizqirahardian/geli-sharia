@@ -1,0 +1,57 @@
+.card{
+    margin-bottom: 20px;
+}
+
+.float-right{
+    float: right;
+}
+
+.asurance span{
+    color: gray;
+}
+
+.asurance label{
+    font-weight: 600;
+    margin-top: 20px;
+}
+
+.data-asurance .asurance-item{
+    margin-bottom: 10px;
+}
+
+.data-asurance .asurance-item p{
+    margin-bottom: 0px;
+}
+
+.data-asurance .asurance-item span{
+    font-weight: 600;
+    color: black;
+}
+
+.check-data p{
+    float: left;
+    margin: 7px 0px;
+    color: gray;
+}
+
+.must-pay span{
+    color: gray;
+}
+
+.must-pay label{
+    font-weight: 600;
+    color: black;
+    margin: 0px;
+}
+
+.must-pay p{
+    font-weight: 600;
+    color: black;
+    font-size: 26px;
+    margin: 0px;
+}
+
+.cnt-label{
+    font-weight: 500;
+    color: black !important;
+}
