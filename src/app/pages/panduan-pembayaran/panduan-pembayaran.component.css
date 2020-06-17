@@ -1,0 +1,49 @@
+.infopay-title p{
+    color: #53d0a8;
+    font-weight: 500;
+    margin-bottom: 0px;
+}
+
+.infopay-title h5{
+    color: #53d0a8;
+}
+
+.info-pay{
+    margin-bottom: 20px;
+}
+
+.info-pay .amount, .info-pay .invoice{
+    border-bottom: solid 1px #e2e2e2;
+}
+
+.info-pay .amount label, .info-pay .invoice label {
+    color: gray;
+}
+
+.info-pay .amount span{
+    float: right;
+    color: black;
+}
+
+.info-pay .invoice span{
+    float: right;
+    color: gray;
+}
+
+.item-card{
+    margin-bottom: 40px;
+}
+
+.item-card label{
+    color: blue;
+    font-weight: 500;
+}
+.item-card ol li{
+    border-bottom: solid 1px #efefef;
+    padding: 10px 0px;
+}
+
+.VA-c{
+    color: #bb0000;
+    font-weight: 500;
+}

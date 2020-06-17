@@ -1,1 +1,66 @@
-<p>pembayaran works!</p>
+<div class="container">
+    <div class="header">
+        <div class="mb-4">
+            <p class="small mb-0">Ringkasan <span>> Pembayaran</span></p>
+            <h5 class="mb-0 card-title">Pilih Metode Pembayaran</h5>
+            <p class="small">Langkah 4 dari <span>5</span></p>
+        </div>
+    </div>
+    <div class="">
+        <h5 class="text-center card-title">Pilih metode pembayaran yang kamu inginkan</h5>
+    </div>
+    <div class="row row-cols-1 justify-content-center">
+            <div class="col mb-4 table-responsive">
+                <div class="card card-style">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-4">
+                                <b class="card-title">Gambar</b>
+                            </div>
+                            <div class="col-8">
+                                <b class="sm-text card-title">Virtual Account</b>
+                                <p class="sm-text card-desc">
+                                    Gunakan virtual akun untuk melakukan pembayaran melalui ATM atau e-banking bank pilihanmu
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <img src="">
+                                <b class="card-title">Gambar</b>
+                            </div>
+                            <div class="col-4">
+                                <img src="">
+                                <b class="card-title">Gambar</b>
+                            </div>
+                            <div class="col-4">
+                                <img src="">
+                                <b class="card-title">Gambar</b>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col mb-4 table-responsive">
+                <div class="card card-style">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-4">
+                                <b class="card-title">Gambar</b>
+                            </div>
+                            <div class="col-8">
+                                <b class="sm-text card-title">Kartu Kredit</b>
+                                <p class="sm-text card-desc">
+                                    Bayar menggunakan layanan Visa dan MasterCard
+                                </p>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <!-- <button class="btn btn-danger" routerLink="/data-diri">Beli</button> -->
+                            <button class="btn btn-danger" (click)="buyProduct()">Bayar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
