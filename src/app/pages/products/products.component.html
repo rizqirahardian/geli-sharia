@@ -2,7 +2,7 @@
     <h5>Yuk cek perlindunganmu!</h5>
     <div class="card mb-4">
         <div class="card-body">
-            <h5 class="card-title">{{productName}}</h5>
+            <h5 class="card-title">{{orderPolis.product}}</h5>
             <p>{{productName}} adalah produk asuransi jiwa dengan fitur dan pengembalian jaminan anti lapsed</p>
             <div class="datepicker">
                 <div class="form-group">
@@ -17,12 +17,14 @@
                 </div>
                 <div class="form-group">
                     <label>Premi</label>
-                    <input type="text" class="form-control" [ngModel]="premi | currency:'IDR'" [ngModelOptions]="{updateOn:'blur'}" (ngModelChange)="premi=$event">
+                    <input type="text" class="form-control" [ngModel]="orderPolis.premi | currency:'IDR'"
+                        [ngModelOptions]="{updateOn:'blur'}" (ngModelChange)="orderPolis.premi=$event">
                     <a class="xs-text">*Premi Tinggi Menyesuaikan Umur</a>
                 </div>
                 <div class="form-group">
                     <label>Manfaat</label>
-                    <input type="text" class="form-control" [ngModel]="manfaat | currency:'IDR'" [ngModelOptions]="{updateOn:'blur'}" (ngModelChange)="manfaat=$event">
+                    <input type="text" class="form-control" [ngModel]="orderPolis.manfaat | currency:'IDR'"
+                        [ngModelOptions]="{updateOn:'blur'}" (ngModelChange)="orderPolis.manfaat=$event">
                     <a class="xs-text" (click)="openModal()">Lihat Illustrasi</a>
                 </div>
                 <div class="">
@@ -37,22 +39,28 @@
             <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
                 <ngb-panel title="Manfaat" class="mb-4">
                     <ng-template ngbPanelContent>
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
-                        3 wolf
-                        moon officia
-                        aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch
-                        3 wolf
-                        moon tempor,
-                        sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil
-                        anim
-                        keffiyeh helvetica,
-                        craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
-                        vice
-                        lomo. Leggings
-                        occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't
-                        heard of
-                        them accusamus
-                        labore sustainable VHS.
+                        <b>Manfaat Meninggal Dunia</b>
+                        Apabila Tertanggung meninggal dunia sebelum berakhirnya masa asuransi, maka Great Eastern akan
+                        membayarkan Uang Pertanggungan dikurangi Manfaat Hidup yang telah dibayarkan (jika ada) kepada
+                        Penerima Manfaat.
+
+                        Catatan:
+                        Apabila Tertanggung meninggal dunia dalam kurun waktu 2 tahun pertama Polis dan terdapat
+                        pernyataan yang tidak diungkap dengan benar/non-disclose oleh Tertanggung dan atau Pemegang
+                        Polis maka Manfaat Meninggal Dunia tifak dibayarkan. Premi yang telah dibayarkan dikurangi
+                        biaya-biaya(jika ada) akan dikembalikan kepada Penerima Manfaat.
+
+                        <b>Manfaat Hidup</b>
+                        Apabila Tertanggung mencapai usia 65(enam puluh lima) tahun, Great Eastern akan membayarkan
+                        Manfaat Hidup kepada Pemegang Polis yaitu sejumlah 100%(seratus persen) dari Premi Tunggal.
+
+                        Mafaat Hidup berlaku apabila Tertanggung pada saat Tanggal Mulai Asuransi kurang dari 51(lima
+                        puluh satu) tahun.
+
+                        <b>Manfaat Akhir Asuransi</b>
+                        Apabila Tertanggung masih hidup sampai dengan berakhirnya masa asuransi, maka Great Eastern
+                        akan membayarkan Uang Pertanggungan dikurangi dengan Manfaat Hidup yang telah dibayarkan (jika
+                        ada) kepada Pemegang Polis.
                     </ng-template>
                 </ngb-panel>
             </ngb-accordion>

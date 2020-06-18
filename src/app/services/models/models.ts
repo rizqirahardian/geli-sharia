@@ -1,4 +1,4 @@
-export class BeliPolis {
+export class OrderPolis {
     id: string
     statusCT: string
     namaCT: string

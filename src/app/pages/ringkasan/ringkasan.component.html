@@ -14,21 +14,20 @@
             </div>
             <div class="card">
                 <div class="card-body asurance">
-                    <span class="">Informasi Produk</span>
+                    <span class="">Informasi Produk</span><br>
                     <label>Great Saver Assurance</label>
                     <p>Melalui GoGreat kamu bisa mendapatkan informasi asuransi jiwa yang sesuai dengan kebutuhan Great Estern Life Indnesia</p>
                     <div class="data-asurance">
                         <div class="asurance-item">
                             <p>Premi</p>
-                            <span>Rp.14.000.000</span>
+                            <span>{{premi}}</span>
                         </div>
                         <div class="asurance-item">
                             <p>Manfaat</p>
-                            <span>Rp.200.000.000</span>
+                            <span>{{manfaat}}</span>
                         </div>
                         <div class="text-center">
-                            <!-- <button class="btn btn-danger" routerLink="/data-diri">Beli</button> -->
-                            <button class="btn btn-danger" (click)="buyProduct()">Ubah</button>
+                            <button class="btn btn-danger" (click)="goToProduct()">Ubah</button>
                         </div>
                     </div>
                 </div>
@@ -36,34 +35,34 @@
             <div class="card">
                 <div class="card-body check-data">
                     <p class="">Informasi Data Diri</p>
-                        <!-- <button class="btn btn-danger" routerLink="/data-diri">Beli</button> -->
-                    <button class="btn btn-danger float-right" (click)="buyProduct()">Check</button>
+                    <button class="btn btn-danger float-right" (click)="goToDataDiri()">Check</button>
                 </div>
             </div>
             <div class="card">
                 <div class="card-body must-pay">
-                    <span>Pembayaran</span>
+                    <span>Pembayaran</span><br>
                     <label>Premi yang harus kamu bayar :</label>
-                    <p>Rp. 10.000.000</p>
+                    <p>{{premi}}</p>
                 </div>
             </div>
             <div class="card">
                 <div class="card-body check-data">
                     <div class="form-group">
                         <p class="mb-0 cnt-label" >Kode Promo (Optional)</p>
-                        <input type="text" [(ngModel)]="beliPolis.namaCT" class="form-control">
+                        <!-- <input type="text" [(ngModel)]="beliPolis.namaCT" class="form-control"> -->
+                        <input type="text" class="form-control">
                     </div>
                     <div class="form-group">
-                        <p class="mb-0 cnt-label" >Kode Refferal (Optional)</p>
-                        <input type="text" [(ngModel)]="beliPolis.namaCT" class="form-control">
+                        <p class="mb-0 cnt-label" >Kode Referal (Optional)</p>
+                        <!-- <input type="text" [(ngModel)]="beliPolis.namaCT" class="form-control"> -->
+                        <input type="text" class="form-control">
                     </div>
                     <span>Selamat kode promo berhasil digunakan !</span>Kamu akan mendapatkan cashback sebesar <span>Rp. 200.000</span>
                     cashback ini akan ditransfer ke rekening bank yang kamu isi.
                 </div>
             </div>
             <div class="text-center">
-                <!-- <button class="btn btn-danger" routerLink="/data-diri">Beli</button> -->
-                <button class="btn btn-danger" (click)="buyProduct()">Selanjutnya</button>
+                <button class="btn btn-danger" (click)="goToPembayaran()">Selanjutnya</button>
             </div>
         </div>
     </div>

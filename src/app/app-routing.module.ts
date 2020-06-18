@@ -15,7 +15,7 @@ const routes: Routes = [
   {path: '404', redirectTo: 'dashboard'},
   {path: '', component: MenuComponent, children: [
     {path: 'dashboard', component: DashboardComponent},
-    {path: 'product/:id', component: ProductsComponent},
+    {path: 'product', component: ProductsComponent},
     {path: 'data-diri', component: DataDiriComponent},
     {path: 'ringkasan', component: RingkasanComponent},
     {path: 'pembayaran', component: PembayaranComponent},

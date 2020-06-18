@@ -18,8 +18,8 @@ export class DashboardComponent implements OnInit {
     
   }
 
-  goToProduct(id) {
-      this.router.navigate([`product/${id}`])
+  goToProduct(str) {
+      this.router.navigate([`product`], { state: { produk: str} })
   }
 
 }

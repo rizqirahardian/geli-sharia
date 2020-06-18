@@ -1,50 +1,53 @@
 <div class="container">
-        <div class="text-center infopay-title">
-            <p>Payment Code</p>
-            <h5>8889967000000029</h5>
-        </div>
-        <div class="">
-            <div class="info-pay">
-                <div class="amount">
-                    <label>Amount</label>
-                    <span>IDR 10.000.000</span>
-                </div>
-                <div class="invoice">
-                    <label>Invoice Number</label>
-                    <span>192</span>
-                </div>
+    <div class="text-center infopay-title">
+        <p>Payment Code</p>
+        <h5>8889967000000029</h5>
+    </div>
+    <div class="">
+        <div class="info-pay">
+            <div class="amount">
+                <label>Amount</label>
+                <span>{{premi}}</span>
             </div>
-            <div class="item-card">
-                <label>Via ATM Mandiri :</label>
-                <ol>
-                    <li>Insert ATM Card then enter ATM PIN</li>
-                    <li>Choose menu "Bayar/Beli"</li>
-                    <li>Choose menu "Lainnya" then another "Lainnya"</li>
-                    <li>Choose menu "Ecommerce"</li>
-                    <li>Input the first 5 digit from Mandiri VA number (e.g.8999)</li>
-                    <li>Input full VA number <span class="VA-c">8889967000000029</span></li>
-                    <li>Input the amount</li>
-                    <li>VA number,Name and Amount will appear on screen</li>
-                    <li>Press 1 and choose "YA"</li>
-                    <li>Confrim payment and choose "YA"</li>
-                    <li>Transaction is done. Please keep your receipt</li>
-                </ol>
+            <div class="invoice">
+                <label>Invoice Number</label>
+                <span>{{orderID}}</span>
             </div>
-            <div class="item-card">
-                    <label>Via Internet Banking Individual Mandiri :</label>
-                    <ol>
-                        <li>Insert ATM Card then enter ATM PIN</li>
-                        <li>Choose menu "Bayar/Beli"</li>
-                        <li>Choose menu "Lainnya" then another "Lainnya"</li>
-                        <li>Choose menu "Ecommerce"</li>
-                        <li>Input the first 5 digit from Mandiri VA number (e.g.8999)</li>
-                        <li>Input full VA number <span>8889967000000029</span></li>
-                        <li>Input the amount</li>
-                        <li>VA number,Name and Amount will appear on screen</li>
-                        <li>Press 1 and choose "YA"</li>
-                        <li>Confrim payment and choose "YA"</li>
-                        <li>Transaction is done. Please keep your receipt</li>
-                    </ol>
-                </div>
         </div>
+        <div class="item-card">
+            <label>Via ATM Mandiri :</label>
+            <ol>
+                <li>Insert ATM Card then enter ATM PIN</li>
+                <li>Choose menu "Bayar/Beli"</li>
+                <li>Choose menu "Lainnya" then another "Lainnya"</li>
+                <li>Choose menu "Ecommerce"</li>
+                <li>Input the first 5 digit from Mandiri VA number (e.g.8999)</li>
+                <li>Input full VA number <span class="VA-c">8889967000000029</span></li>
+                <li>Input the amount</li>
+                <li>VA number,Name and Amount will appear on screen</li>
+                <li>Press 1 and choose "YA"</li>
+                <li>Confrim payment and choose "YA"</li>
+                <li>Transaction is done. Please keep your receipt</li>
+            </ol>
+        </div>
+        <div class="item-card">
+            <label>Via Internet Banking Individual Mandiri :</label>
+            <ol>
+                <li>Insert ATM Card then enter ATM PIN</li>
+                <li>Choose menu "Bayar/Beli"</li>
+                <li>Choose menu "Lainnya" then another "Lainnya"</li>
+                <li>Choose menu "Ecommerce"</li>
+                <li>Input the first 5 digit from Mandiri VA number (e.g.8999)</li>
+                <li>Input full VA number <span>8889967000000029</span></li>
+                <li>Input the amount</li>
+                <li>VA number,Name and Amount will appear on screen</li>
+                <li>Press 1 and choose "YA"</li>
+                <li>Confrim payment and choose "YA"</li>
+                <li>Transaction is done. Please keep your receipt</li>
+            </ol>
+        </div>
+        <div class="item-card text-center">
+            <button class="btn btn-danger" routerLink="/konfirmasi">Selesai</button>
+        </div>
+    </div>
 </div>
