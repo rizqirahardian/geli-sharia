@@ -8,141 +8,149 @@
     </div>
 
     <div class="" *ngIf="!onOtp">
-        <div class="">
-            <div class="">
+        <div class="row">
+            <div class="col-md-12">
                 <h5 class="text-center card-title">Yuk isi data diri kamu</h5>
             </div>
-            <div class="form-group">
-                <p class="mb-0 cnt-label">Kamu ingin memberikan asuransi untuk</p>
-                <select name="pemegangPolis" id="" [(ngModel)]="orderPolis.statusCT" class="form-control">
-                    <option value="Diri Sendiri">Diri Sendiri</option>
-                    <option value="Suami">Suami</option>
-                    <option value="Istri">Istri</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <p class="mb-0 cnt-label" *ngIf="orderPolis.statusCT == 'Diri Sendiri'">Nama Sesuai KTP</p>
-                <p class="mb-0 cnt-label" *ngIf="orderPolis.statusCT != 'Diri Sendiri'">Nama Sesuai KTP
-                    {{orderPolis.statusCT}}</p>
-                <input type="text" [(ngModel)]="orderPolis.namaCT" class="form-control">
-            </div>
-            <div class="form-group">
-                <p class="mb-0 cnt-label" *ngIf="orderPolis.statusCT == 'Diri Sendiri'">Nomor KTP</p>
-                <p class="mb-0 cnt-label" *ngIf="orderPolis.statusCT != 'Diri Sendiri'">Nomor KTP {{orderPolis.statusCT}}</p>
-                <input type="number" [(ngModel)]="orderPolis.nomorKTPCT" class="form-control">
-            </div>
-            <div class="form-group">
-                <p class="mb-0 cnt-label" *ngIf="orderPolis.statusCT == 'Diri Sendiri'">Tanggal Lahir</p>
-                <p class="mb-0 cnt-label" *ngIf="orderPolis.statusCT != 'Diri Sendiri'">Tanggal Lahir {{orderPolis.statusCT}}</p>
-                <input [(ngModel)]="orderPolis.dobCT" class="form-control" placeholder="yyyy-mm-dd" name="dpCT"
-                    ngbDatepicker #dpCT="ngbDatepicker" (click)="dpCT.toggle()">
-            </div>
-            <div class="form-group">
-                <p class="mb-0 cnt-label">Jenis Kelamin</p>
-                <input type="radio" name="gender" [(ngModel)]="orderPolis.genderCT" value="L">Laki-laki
-                <input type="radio" name="gender" [(ngModel)]="orderPolis.genderCT" value="P">Perempuan
-            </div>
-            <div *ngIf="orderPolis.statusCT == 'Diri Sendiri'" class="form-group">
-                <p class="mb-0 cnt-label">Nomor Ponsel</p>
-                <div class="input-group input-group-sm mb-3">
-                    <div class="input-group-prepend">
-                        <select class="input-group-text" id="inputGroup-sizing-sm" [(ngModel)]="intNumber">
-                            <option value="+62" selected>+62</option>
-                        </select>
-                    </div>
-                    <input type="number" class="form-control" [(ngModel)]="nomorPemegangPolis">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <p class="mb-0 cnt-label">Kamu ingin memberikan asuransi untuk</p>
+                    <select name="pemegangPolis" id="" [(ngModel)]="orderPolis.statusCT" class="form-control">
+                        <option value="Diri Sendiri">Diri Sendiri</option>
+                        <option value="Suami">Suami</option>
+                        <option value="Istri">Istri</option>
+                    </select>
                 </div>
             </div>
-            <div *ngIf="orderPolis.statusCT == 'Diri Sendiri'" class="form-group">
-                <p class="mb-0 cnt-label">Alamat Email Kamu</p>
-                <input type="email" [(ngModel)]="orderPolis.emailPP" class="form-control">
-            </div>
-            <div class="mb-4 form-group">
-                <p class="mb-0 cnt-label">Provinsi</p>
-                <select name="provinsi" id="" [(ngModel)]="orderPolis.provinsi" class="form-control">
-                    <option value="" *ngFor="let prov of provinsi" [value]="prov.nama">{{prov.nama}}</option>
-                </select>
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <p class="mb-0 cnt-label" *ngIf="orderPolis.statusCT == 'Diri Sendiri'">Nama Sesuai KTP</p>
+                        <p class="mb-0 cnt-label" *ngIf="orderPolis.statusCT != 'Diri Sendiri'">Nama Sesuai KTP
+                            {{orderPolis.statusCT}}</p>
+                        <input type="text" [(ngModel)]="orderPolis.namaCT" class="form-control">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <p class="mb-0 cnt-label" *ngIf="orderPolis.statusCT == 'Diri Sendiri'">Nomor KTP</p>
+                        <p class="mb-0 cnt-label" *ngIf="orderPolis.statusCT != 'Diri Sendiri'">Nomor KTP {{orderPolis.statusCT}}</p>
+                        <input type="number" [(ngModel)]="orderPolis.nomorKTPCT" class="form-control">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <p class="mb-0 cnt-label" *ngIf="orderPolis.statusCT == 'Diri Sendiri'">Tanggal Lahir</p>
+                        <p class="mb-0 cnt-label" *ngIf="orderPolis.statusCT != 'Diri Sendiri'">Tanggal Lahir {{orderPolis.statusCT}}</p>
+                        <input [(ngModel)]="orderPolis.dobCT" class="form-control" placeholder="yyyy-mm-dd" name="dpCT"
+                            ngbDatepicker #dpCT="ngbDatepicker" (click)="dpCT.toggle()">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <p class="mb-0 cnt-label">Jenis Kelamin</p>
+                        <input type="radio" name="gender" [(ngModel)]="orderPolis.genderCT" value="L"> Laki-laki
+                        <input type="radio" name="gender" [(ngModel)]="orderPolis.genderCT" value="P"> Perempuan
+                    </div>
+                    <div *ngIf="orderPolis.statusCT == 'Diri Sendiri'" class="form-group col-md-6">
+                        <p class="mb-0 cnt-label">Nomor Ponsel</p>
+                        <div class="input-group input-group-sm mb-3">
+                            <div class="input-group-prepend">
+                                <select class="input-group-text" id="inputGroup-sizing-sm" [(ngModel)]="intNumber" class="form-control">
+                                    <option value="+62" selected>+62</option>
+                                </select>
+                            </div>
+                            <input type="number" [(ngModel)]="nomorPemegangPolis" class="form-control thisfieldwselect">
+                        </div>
+                    </div>
+                    <div *ngIf="orderPolis.statusCT == 'Diri Sendiri'" class="form-group col-md-6">
+                        <p class="mb-0 cnt-label">Alamat Email Kamu</p>
+                        <input type="email" [(ngModel)]="orderPolis.emailPP" class="form-control">
+                    </div>
+                    <div class="mb-4 form-group col-md-6">
+                        <p class="mb-0 cnt-label">Provinsi</p>
+                        <select name="provinsi" id="" [(ngModel)]="orderPolis.provinsi" class="form-control">
+                            <option value="" *ngFor="let prov of provinsi" [value]="prov.nama">{{prov.nama}}</option>
+                        </select>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- pemegang polis -->
-        <div *ngIf="orderPolis.statusCT != 'Diri Sendiri'" class="">
-            <div class="form-group">
+        <div *ngIf="orderPolis.statusCT != 'Diri Sendiri'" class="row">
+            <div class="form-group col-md-6">
                 <p class="mb-0 cnt-label">Nama Kamu Sesuai KTP</p>
                 <input type="text" [(ngModel)]="orderPolis.namaPP" class="form-control">
             </div>
-            <div class="form-group">
+            <div class="form-group col-md-6">
                 <p class="mb-0 cnt-label">Tanggal Lahir</p>
                 <input [(ngModel)]="orderPolis.dobPP" class="form-control" placeholder="yyyy-mm-dd" name="dpPP"
                     ngbDatepicker #dpPP="ngbDatepicker" (click)="dpPP.toggle()">
             </div>
-            <div class="form-group">
+            <div class="form-group col-md-6">
                 <p class="mb-0 cnt-label">Jenis Kelamin</p>
-                <input type="radio" name="gender" [(ngModel)]="orderPolis.genderPP" value="L">Laki-laki
-                <input type="radio" name="gender" [(ngModel)]="orderPolis.genderPP" value="P">Perempuan
+                <input type="radio" name="gender" [(ngModel)]="orderPolis.genderPP" value="L"> Laki-laki
+                <input type="radio" name="gender" [(ngModel)]="orderPolis.genderPP" value="P"> Perempuan
             </div>
-            <div *ngIf="orderPolis.statusCT != 'Diri Sendiri'" class="form-group">
+            <div *ngIf="orderPolis.statusCT != 'Diri Sendiri'" class="form-group col-md-6">
                 <p class="mb-0 cnt-label">Nomor Ponsel</p>
                 <div class="input-group input-group-sm mb-3">
                     <div class="input-group-prepend">
-                        <select class="input-group-text" id="inputGroup-sizing-sm" [(ngModel)]="intNumber">
+                        <select class="input-group-text form-control" id="inputGroup-sizing-sm" [(ngModel)]="intNumber">
                             <option value="+62" selected>+62</option>
                         </select>
                     </div>
-                    <input type="number" class="form-control" [(ngModel)]="nomorPemegangPolis">
+                    <input type="number" class="form-control thisfieldwselect" [(ngModel)]="nomorPemegangPolis">
                 </div>
             </div>
-            <div *ngIf="orderPolis.statusCT != 'Diri Sendiri'" class="form-group">
+            <div *ngIf="orderPolis.statusCT != 'Diri Sendiri'" class="form-group col-md-6">
                 <p class="mb-0 cnt-label">Alamat Email Kamu</p>
-                <input type="email" [(ngModel)]="orderPolis.emailPP">
+                <input type="email" [(ngModel)]="orderPolis.emailPP" class="form-control" >
             </div>
-            <div class="mb-4 form-group">
+            <div class="mb-4 form-group col-md-6">
                 <p class="mb-0 cnt-label">Nomor KTP Kamu</p>
-                <input type="number" [(ngModel)]="orderPolis.nomorKTPPP">
+                <input type="number" [(ngModel)]="orderPolis.nomorKTPPP" class="form-control" >
             </div>
         </div>
         <!-- penerima manfaat -->
-        <div class="">
-            <div class="">
+        <div class="row">
+            <div class="col-md-12">
                 <h5 class="">Informasi Penerima Manfaat</h5>
             </div>
-            <div class="form-group">
+            <div class="form-group col-md-6">
                 <p class="mb-0 cnt-label">Penerima Manfaat Adalah</p>
                 <select name="penerimaManfaat" id="" [(ngModel)]="orderPolis.statusPM" class="form-control">
                     <option value="anak">Anak</option>
                 </select>
             </div>
-            <div class="form-group">
+            <div class="form-group col-md-6">
                 <p class="mb-0 cnt-label">Nama Penerima Manfaat Sesuai KTP atau NIK*</p>
                 <input type="text" [(ngModel)]="orderPolis.namaPM" class="form-control">
                 <p class="small mb-0">*NIK untuk Anak di bawah 17 tahun</p>
             </div>
-            <div class="form-group">
+            <div class="form-group col-md-6">
                 <p class="mb-0 cnt-label">Nomor KTP atau NIK* Penerima Manfaat</p>
                 <input type="text" [(ngModel)]="orderPolis.nomorKTPPM" class="form-control">
                 <p class="small mb-0">*NIK untuk Anak di bawah 17 tahun</p>
             </div>
-            <div class="form-group">
+            <div class="form-group col-md-6">
                 <p class="mb-0 cnt-label">Tanggal Lahir Penerima Manfaat</p>
                 <input [(ngModel)]="orderPolis.dobPM" class="form-control mb-4" placeholder="yyyy-mm-dd" name="dp"
                     ngbDatepicker #dp="ngbDatepicker" (click)="dp.toggle()">
             </div>
-            <div class="mb-4 form-group">
+            <div class="mb-4 form-group col-md-6">
                 <p class="mb-0 cnt-label">Jenis Kelamin Penerima Manfaat</p>
                 <input type="radio" name="gender" [(ngModel)]="orderPolis.genderPM" value="laki-laki">Laki-laki
                 <input type="radio" name="gender" [(ngModel)]="orderPolis.genderPM" value="perempuan">Perempuan
             </div>
         </div>
-        <div class="bank">
-            <h5>Informasi Rekening Bank</h5>
-            <div class="form-group">
+        <div class="bank row">
+            <div class="col-md-12">
+                <h5>Informasi Rekening Bank</h5>
+            </div>
+            <div class="form-group col-md-6">
                 <p class="mb-0 cnt-label">Nama Bank</p>
                 <input type="text" [(ngModel)]="orderPolis.namaBank" class="form-control">
             </div>
-            <div class="form-group">
+            <div class="form-group col-md-6">
                 <p class="mb-0 cnt-label">Nomor Rekening</p>
                 <input type="text" [(ngModel)]="orderPolis.nomorBank" class="form-control">
             </div>
-            <div class="form-group">
+            <div class="form-group col-md-6">
                 <p class="mb-0 cnt-label">Nama Pemilik Rekening</p>
                 <input type="text" [(ngModel)]="orderPolis.pemilikBank" class="form-control">
             </div>

@@ -16,3 +16,7 @@
     color: #ec1000;
     font-weight: 600;
 }
+
+.thisfieldwselect {
+    height: calc(1.5em + .5rem + 9px) !important;
+  }

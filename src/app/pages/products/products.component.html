@@ -4,32 +4,32 @@
         <div class="card-body">
             <h5 class="card-title">{{orderPolis.product}}</h5>
             <p>{{productName}} adalah produk asuransi jiwa dengan fitur dan pengembalian jaminan anti lapsed</p>
-            <div class="datepicker">
-                <div class="form-group">
+            <div class="row datepicker">
+                <div class="form-group col-md-12">
                     <label>Tanggal Lahir</label>
                     <input [(ngModel)]="dob" id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp"
                         ngbDatepicker #dp="ngbDatepicker" (click)="dp.toggle()">
                 </div>
-                <div class="form-group">
+                <div class="form-group col-md-12">
                     <p for="formControlRange" class="text-center mb-0 card-title">Sesuaikan Produk</p>
                     <p class="xs-text text-center mb-0">Kamu dapat menyesuaikan produk dengan kebutuhanmu</p>
                     <input type="range" class="form-control-range date" id="formControlRange">
                 </div>
-                <div class="form-group">
+                <div class="form-group col-md-6">
                     <label>Premi</label>
                     <input type="text" class="form-control" [ngModel]="orderPolis.premi | currency:'IDR'"
                         [ngModelOptions]="{updateOn:'blur'}" (ngModelChange)="orderPolis.premi=$event">
                     <a class="xs-text">*Premi Tinggi Menyesuaikan Umur</a>
                 </div>
-                <div class="form-group">
+                <div class="form-group col-md-6">
                     <label>Manfaat</label>
                     <input type="text" class="form-control" [ngModel]="orderPolis.manfaat | currency:'IDR'"
                         [ngModelOptions]="{updateOn:'blur'}" (ngModelChange)="orderPolis.manfaat=$event">
                     <a class="xs-text" (click)="openModal()">Lihat Illustrasi</a>
                 </div>
-                <div class="">
+                <div class="col-md-12 text-center">
                     <!-- <button class="btn btn-danger" routerLink="/data-diri">Beli</button> -->
-                    <button class="btn btn-danger w-100" (click)="buyProduct()">Beli</button>
+                    <button class="btn btn-danger" (click)="buyProduct()">Beli</button>
                 </div>
             </div>
         </div>
