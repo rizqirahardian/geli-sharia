@@ -7,7 +7,7 @@ import * as CryptoJS from 'crypto-js';
 export class Config {
 
     // URL
-    URL: string = 'http://7a61202b61d6.ngrok.io'
+    URL: string = 'https://7a61202b61d6.ngrok.io'
     // URL: string = 'http://35.188.119.199:8082'
     // URL: string = 'http://35.188.119.199:8080'
     // URL: string = 'http://35.189.175.231:8082'
