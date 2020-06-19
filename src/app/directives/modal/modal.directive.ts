@@ -3,7 +3,8 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap'
 
 @Component({
   selector: 'app-modal',
-  templateUrl: 'modal.directive.html'
+  templateUrl: 'modal.directive.html',
+  styleUrls: ['./modal.directive.css']
 })
 export class ModalDirective {
 

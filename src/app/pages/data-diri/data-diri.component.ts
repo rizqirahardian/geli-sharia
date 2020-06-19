@@ -140,4 +140,11 @@ export class DataDiriComponent implements OnInit {
     }
   }
 
+  validateInput() {
+    if (this.orderPolis.statusCT == 'Diri Sendiri') {
+      this.orderPolis.namaPP = this.orderPolis.namaCT
+      this.orderPolis.namaPP = this.orderPolis.namaCT
+    }
+  }
+
 }

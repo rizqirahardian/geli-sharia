@@ -38,11 +38,17 @@ export class HttpService {
 
   getDataById(id) {
     let url = this.cnf.URL + '/geli-service/get-by-id?id=' + id
-    return this.http.get(url).pipe(map(res => res))
+    return this.http.get(url, this.httpOptions).pipe(map(res => res))
   }
   
   getProvinsi() {
     let url = this.cnf.URL + '/geli-service/get-provinsi'
-    return this.http.get(url).pipe(map(res => res))
+    return this.http.get(url, this.httpOptions).pipe(map(res => res))
+  }
+  
+  getPremi() {
+    // this.httpOptions.headers = this.httpOptions.headers.append('content-type', 'application/json')
+    let url = this.cnf.URL + '/geli-service/get-premi'
+    return this.http.get(url, this.httpOptions).pipe(map(res => res))
   }
 }

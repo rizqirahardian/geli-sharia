@@ -8,17 +8,19 @@
                 <div class="form-group col-md-12">
                     <label>Tanggal Lahir</label>
                     <input [(ngModel)]="dob" id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp"
-                        ngbDatepicker #dp="ngbDatepicker" (click)="dp.toggle()">
+                        ngbDatepicker #dp="ngbDatepicker" (click)="dp.toggle()" (ngModelChange)="age=calculateAge(dob)"
+                        [minDate]="{year: 1900, month: 1, day: 1}">
                 </div>
                 <div class="form-group col-md-12">
                     <p for="formControlRange" class="text-center mb-0 card-title">Sesuaikan Produk</p>
                     <p class="xs-text text-center mb-0">Kamu dapat menyesuaikan produk dengan kebutuhanmu</p>
-                    <input type="range" class="form-control-range date" id="formControlRange">
+                    <input type="range" class="form-control-range date" min="{{minPremi}}" max="{{maxPremi}}" step="500000"
+                        [(ngModel)]="orderPolis.premi" (ngModelChange)="orderPolis.premi=$event" id="sliderPremi">
                 </div>
                 <div class="form-group col-md-6">
                     <label>Premi</label>
                     <input type="text" class="form-control" [ngModel]="orderPolis.premi | currency:'IDR'"
-                        [ngModelOptions]="{updateOn:'blur'}" (ngModelChange)="orderPolis.premi=$event">
+                        [ngModelOptions]="{updateOn:'blur'}" (ngModelChange)="orderPolis.premi=$event" (focus)="onFocusCurrency($event)">
                     <a class="xs-text">*Premi Tinggi Menyesuaikan Umur</a>
                 </div>
                 <div class="form-group col-md-6">
@@ -39,28 +41,42 @@
             <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
                 <ngb-panel title="Manfaat" class="mb-4">
                     <ng-template ngbPanelContent>
-                        <b>Manfaat Meninggal Dunia</b>
-                        Apabila Tertanggung meninggal dunia sebelum berakhirnya masa asuransi, maka Great Eastern akan
-                        membayarkan Uang Pertanggungan dikurangi Manfaat Hidup yang telah dibayarkan (jika ada) kepada
-                        Penerima Manfaat.
+                        <p><b>Manfaat Meninggal Dunia</b></p>
+                        <p>
+                            Apabila Tertanggung meninggal dunia sebelum berakhirnya masa asuransi, maka Great Eastern
+                            akan
+                            membayarkan Uang Pertanggungan dikurangi Manfaat Hidup yang telah dibayarkan (jika ada)
+                            kepada
+                            Penerima Manfaat.
+                        </p>
+                        <p>
+                            Catatan:
+                        </p>
+                        <p>
+                            Apabila Tertanggung meninggal dunia dalam kurun waktu 2 tahun pertama Polis dan terdapat
+                            pernyataan yang tidak diungkap dengan benar/non-disclose oleh Tertanggung dan atau Pemegang
+                            Polis maka Manfaat Meninggal Dunia tifak dibayarkan. Premi yang telah dibayarkan dikurangi
+                            biaya-biaya(jika ada) akan dikembalikan kepada Penerima Manfaat.
+                        </p>
 
-                        Catatan:
-                        Apabila Tertanggung meninggal dunia dalam kurun waktu 2 tahun pertama Polis dan terdapat
-                        pernyataan yang tidak diungkap dengan benar/non-disclose oleh Tertanggung dan atau Pemegang
-                        Polis maka Manfaat Meninggal Dunia tifak dibayarkan. Premi yang telah dibayarkan dikurangi
-                        biaya-biaya(jika ada) akan dikembalikan kepada Penerima Manfaat.
+                        <p><b>Manfaat Hidup</b></p>
+                        <p>
+                            Apabila Tertanggung mencapai usia 65(enam puluh lima) tahun, Great Eastern akan membayarkan
+                            Manfaat Hidup kepada Pemegang Polis yaitu sejumlah 100%(seratus persen) dari Premi Tunggal.
+                        </p>
+                        <p>
+                            Mafaat Hidup berlaku apabila Tertanggung pada saat Tanggal Mulai Asuransi kurang dari
+                            51(lima
+                            puluh satu) tahun.
+                        </p>
 
-                        <b>Manfaat Hidup</b>
-                        Apabila Tertanggung mencapai usia 65(enam puluh lima) tahun, Great Eastern akan membayarkan
-                        Manfaat Hidup kepada Pemegang Polis yaitu sejumlah 100%(seratus persen) dari Premi Tunggal.
-
-                        Mafaat Hidup berlaku apabila Tertanggung pada saat Tanggal Mulai Asuransi kurang dari 51(lima
-                        puluh satu) tahun.
-
-                        <b>Manfaat Akhir Asuransi</b>
-                        Apabila Tertanggung masih hidup sampai dengan berakhirnya masa asuransi, maka Great Eastern
-                        akan membayarkan Uang Pertanggungan dikurangi dengan Manfaat Hidup yang telah dibayarkan (jika
-                        ada) kepada Pemegang Polis.
+                        <p><b>Manfaat Akhir Asuransi</b></p>
+                        <p>
+                            Apabila Tertanggung masih hidup sampai dengan berakhirnya masa asuransi, maka Great Eastern
+                            akan membayarkan Uang Pertanggungan dikurangi dengan Manfaat Hidup yang telah dibayarkan
+                            (jika
+                            ada) kepada Pemegang Polis.
+                        </p>
                     </ng-template>
                 </ngb-panel>
             </ngb-accordion>

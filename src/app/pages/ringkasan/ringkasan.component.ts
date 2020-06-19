@@ -28,7 +28,7 @@ export class RingkasanComponent implements OnInit {
     }
     
     // for development only
-    this.orderID = '1'
+    // this.orderID = '1'
 
     this.getDataById(this.orderID)
   }
@@ -59,6 +59,5 @@ export class RingkasanComponent implements OnInit {
     this.router.navigate(['pembayaran'], {
       state: { id: this.orderID}
     })
-
   }
 }

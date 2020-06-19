@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Injector } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+// import { MatSliderModule } from '@angular/material/slider'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -36,7 +37,8 @@ import { KonfirmasiComponent } from './pages/konfirmasi/konfirmasi.component';
     AppRoutingModule,
     NgbModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    // MatSliderModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

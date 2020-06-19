@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router'
+import { Router } from '@angular/router'
 
-import { NgbDateStruct, NgbCalendar, NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDateStruct, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalDirective } from '../../directives/modal/modal.directive'
 import { HttpService } from '../../services/http/http.service'
 import { OrderPolis } from '../../services/models/models'
@@ -20,12 +20,14 @@ export class ProductsComponent implements OnInit {
   model: NgbDateStruct
   date: {year: number, month: number}
   dob: string
+  age: string
   premi: string
   manfaat: string
+  minPremi: any
+  maxPremi: any
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute,
     private modalService: NgbModal,
     private http: HttpService
   ) { }
@@ -37,6 +39,8 @@ export class ProductsComponent implements OnInit {
     this.orderID = history.state.id
     if (this.orderID) {
       this.getDataById(this.orderID)
+    } else {
+      this.getPremi()
     }
   }
 
@@ -69,8 +73,22 @@ export class ProductsComponent implements OnInit {
     })
   }
 
+  getPremi() {
+    this.http.getPremi().subscribe((res: any) => {
+      if (res.status == 'ok') {
+        let result = res.datas
+        result.forEach(obj => {
+          if (obj.kode == 'MAX') {
+            this.maxPremi = obj.value
+          } else {
+            this.minPremi = obj.value
+          }
+        })
+      }
+    })
+  }
+
   buyProduct() {
-    // console.log(this.orderPolis.manfaat)
     if (!this.orderID) {
       this.router.navigate(['data-diri'], {
         state: { productName: this.productName, premi: this.orderPolis.premi, manfaat: this.orderPolis.manfaat}
@@ -119,10 +137,28 @@ export class ProductsComponent implements OnInit {
 
   openModal() {
     const modalRef = this.modalService.open(ModalDirective);
-    modalRef.componentInstance.product = this.productName;
-    modalRef.componentInstance.age = this.productName;
-    modalRef.componentInstance.premi = this.premi;
-    modalRef.componentInstance.manfaat = this.manfaat;
+    modalRef.componentInstance.product = this.orderPolis.product
+    modalRef.componentInstance.age = this.age;
+    modalRef.componentInstance.premi = this.orderPolis.premi
+    modalRef.componentInstance.manfaat = this.orderPolis.manfaat
+  }
+
+  onFocusCurrency(event) {
+    event.target.value = event.target.value.replace(/\D/g,'')
+  }
+
+  onInputSlider(event) {
+    this.orderPolis.premi = event.target.value
+    console.log(this.orderPolis.premi)
+    console.log(event.target.value)
+  }
+  
+  calculateAge(birthday) { // birthday is a date
+    let str = `${birthday.year}-${birthday.month}-${birthday.day}`
+    let dob = new Date(str)
+    let ageDifMs = Date.now() - dob.getTime()
+    let ageDate = new Date(ageDifMs) // miliseconds from epoch
+    return Math.abs(ageDate.getUTCFullYear() - 1970);
   }
 
 }
