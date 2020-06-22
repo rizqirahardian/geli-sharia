@@ -17,6 +17,7 @@ import { RingkasanComponent } from './pages/ringkasan/ringkasan.component';
 import { PembayaranComponent } from './pages/pembayaran/pembayaran.component';
 import { PanduanPembayaranComponent } from './pages/panduan-pembayaran/panduan-pembayaran.component';
 import { KonfirmasiComponent } from './pages/konfirmasi/konfirmasi.component';
+import { Modal2Directive } from './directives/modal2/modal2.directive';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { KonfirmasiComponent } from './pages/konfirmasi/konfirmasi.component';
     PembayaranComponent,
     PanduanPembayaranComponent,
     KonfirmasiComponent,
+    Modal2Directive,
   ],
   imports: [
     BrowserModule,
@@ -42,6 +44,6 @@ import { KonfirmasiComponent } from './pages/konfirmasi/konfirmasi.component';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [ModalDirective]
+  entryComponents: [ModalDirective, Modal2Directive]
 })
 export class AppModule { }

@@ -12,6 +12,7 @@ export class HttpService {
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',
+      // 'Access-Control-Allow-Origin':  '*',
       // 'Authorization': 'my-auth-token'
     })
   }
@@ -50,5 +51,9 @@ export class HttpService {
     // this.httpOptions.headers = this.httpOptions.headers.append('content-type', 'application/json')
     let url = this.cnf.URL + '/geli-service-api/get-premi'
     return this.http.get(url, this.httpOptions).pipe(map(res => res))
+  }
+
+  getManfaat() {
+    
   }
 }

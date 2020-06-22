@@ -25,6 +25,7 @@ export class ProductsComponent implements OnInit {
   manfaat: string
   minPremi: any
   maxPremi: any
+  manfaatDesc: string
 
   constructor(
     private router: Router,
@@ -42,6 +43,43 @@ export class ProductsComponent implements OnInit {
     } else {
       this.getPremi()
     }
+
+    this.manfaatDesc = `<p><b>Manfaat Meninggal Dunia</b></p>
+    <p>
+        Apabila Tertanggung meninggal dunia sebelum berakhirnya masa asuransi, maka Great Eastern
+        akan
+        membayarkan Uang Pertanggungan dikurangi Manfaat Hidup yang telah dibayarkan (jika ada)
+        kepada
+        Penerima Manfaat.
+    </p>
+    <p>
+        Catatan:
+    </p>
+    <p>
+        Apabila Tertanggung meninggal dunia dalam kurun waktu 2 tahun pertama Polis dan terdapat
+        pernyataan yang tidak diungkap dengan benar/non-disclose oleh Tertanggung dan atau Pemegang
+        Polis maka Manfaat Meninggal Dunia tifak dibayarkan. Premi yang telah dibayarkan dikurangi
+        biaya-biaya(jika ada) akan dikembalikan kepada Penerima Manfaat.
+    </p>
+
+    <p><b>Manfaat Hidup</b></p>
+    <p>
+        Apabila Tertanggung mencapai usia 65(enam puluh lima) tahun, Great Eastern akan membayarkan
+        Manfaat Hidup kepada Pemegang Polis yaitu sejumlah 100%(seratus persen) dari Premi Tunggal.
+    </p>
+    <p>
+        Mafaat Hidup berlaku apabila Tertanggung pada saat Tanggal Mulai Asuransi kurang dari
+        51(lima
+        puluh satu) tahun.
+    </p>
+
+    <p><b>Manfaat Akhir Asuransi</b></p>
+    <p>
+        Apabila Tertanggung masih hidup sampai dengan berakhirnya masa asuransi, maka Great Eastern
+        akan membayarkan Uang Pertanggungan dikurangi dengan Manfaat Hidup yang telah dibayarkan
+        (jika
+        ada) kepada Pemegang Polis.
+    </p>`
   }
 
   getDataById(id) {
@@ -91,7 +129,7 @@ export class ProductsComponent implements OnInit {
   buyProduct() {
     if (!this.orderID) {
       this.router.navigate(['data-diri'], {
-        state: { productName: this.productName, premi: this.orderPolis.premi, manfaat: this.orderPolis.manfaat}
+        state: { productName: this.orderPolis.product, premi: this.orderPolis.premi, manfaat: this.orderPolis.manfaat}
       })
     } else {
 
