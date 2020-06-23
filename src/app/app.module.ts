@@ -2,8 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Injector } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-// import { MatSliderModule } from '@angular/material/slider'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -40,7 +40,7 @@ import { Modal2Directive } from './directives/modal2/modal2.directive';
     NgbModule,
     FormsModule,
     HttpClientModule,
-    // MatSliderModule,
+    NgxSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

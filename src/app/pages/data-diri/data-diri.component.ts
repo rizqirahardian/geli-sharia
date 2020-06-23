@@ -1,7 +1,8 @@
 import { Component, OnInit, Input, ViewChild, TemplateRef } from '@angular/core';
 import { Router } from '@angular/router'
 
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
+import { NgbModal, NgbDate } from '@ng-bootstrap/ng-bootstrap'
+import { NgxSpinnerService } from 'ngx-spinner';
 
 import { OrderPolis } from '../../services/models/models'
 import { HttpService } from '../../services/http/http.service'
@@ -21,24 +22,27 @@ export class DataDiriComponent implements OnInit {
   orderID: string
   intNumber: string
   nomorPemegangPolis: string
-  status:string
+  status: string
   provinsi: any
   deklarasikesehatan: boolean
   syaratdanketentuan: boolean
   onOtp: boolean
   nullField: string
 
-  @ViewChild('validasi', {static: false}) modalContent: TemplateRef<any>
+  @ViewChild('validasi', { static: false }) modalContent: TemplateRef<any>
 
   constructor(
     private router: Router,
     private http: HttpService,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private spinner: NgxSpinnerService,
   ) { }
 
   ngOnInit() {
+    this.spinner.show()
+
     this.orderPolis = new OrderPolis
-    
+
     this.orderPolis.product = history.state.productName
     this.orderPolis.premi = history.state.premi
     this.orderPolis.manfaat = history.state.manfaat
@@ -55,45 +59,64 @@ export class DataDiriComponent implements OnInit {
   }
 
   getDataById(id) {
-    this.http.getDataById(id).subscribe((res: any) => {
-      let result = res.datas[0]
-      this.orderPolis.statusCT = result.hubungan_ct
-      this.orderPolis.namaPP = result.nama_pp
-      this.orderPolis.dobPP = result.tanggal_lahir_pp
-      this.orderPolis.genderPP = result.genderPP
-      this.orderPolis.nomorTelponPP = result.nomorTelponPP
-      this.orderPolis.emailPP = result.email_pp
-      this.orderPolis.nomorKTPPP = result.nomorKTPPP
-      this.orderPolis.provinsi = result.provinsi
-      this.orderPolis.statusPM = result.penerima_manfaat
-      this.orderPolis.namaPM = result.namaPM
-      this.orderPolis.nomorKTPPM = result.no_ktp_pm
-      this.orderPolis.dobPM = result.tanggal_lahir_pm
-      this.orderPolis.genderPM = result.jenis_kelamin_pm
-      this.orderPolis.namaBank = result.nama_bank
-      this.orderPolis.nomorBank = result.nomor_rekening
-      this.orderPolis.pemilikBank = result.nama_pemilik_rekening
-      this.orderPolis.namaCT = result.nama_ct
-      this.orderPolis.nomorKTPCT = result.no_ktp_ct
-      this.orderPolis.dobCT = result.tanggal_lahir_ct
-      this.orderPolis.genderCT = result.jenis_kelamin_ct
-      this.orderPolis.premi = result.premi
-      this.orderPolis.manfaat = result.uang_pertanggungan
-      this.orderPolis.product = result.produk
+    this.http.getProvinsi().subscribe((res: any) => {
+      this.provinsi = res.datas
+      this.http.getDataById(id).subscribe((res: any) => {
+        this.spinner.hide()
 
-      this.getProvinsi()
+        let result = res.datas[0]
+        if (result.nomor_ponsel) {
+          this.intNumber = result.nomor_ponsel.substring(0, 3)
+          this.nomorPemegangPolis = result.nomor_ponsel.substring(3, result.nomor_ponsel.length - 1)
+        }
+
+        this.orderPolis.id = result.id
+        this.orderPolis.statusCT = result.hubungan_ct
+        this.orderPolis.namaPP = result.nama_pp
+        this.orderPolis.dobPP = result.tanggal_lahir
+        this.orderPolis.genderPP = result.jenis_kelamin
+        this.orderPolis.nomorTelponPP = result.nomor_telpon
+        this.orderPolis.emailPP = result.email
+        this.orderPolis.nomorKTPPP = result.nomor_ktp
+        this.orderPolis.provinsi = result.provinsi
+        this.orderPolis.statusPM = result.penerima_manfaat
+        this.orderPolis.namaPM = result.nama_pm
+        this.orderPolis.nomorKTPPM = result.no_ktp_pm
+        this.orderPolis.dobPM = result.tanggal_lahir_pm
+        this.orderPolis.genderPM = result.jenis_kelamin_pm
+        this.orderPolis.namaBank = result.nama_bank
+        this.orderPolis.nomorBank = result.nomor_rekening
+        this.orderPolis.pemilikBank = result.nama_pemilik_rekening
+        this.orderPolis.namaCT = result.nama_ct
+        this.orderPolis.nomorKTPCT = result.no_ktp_ct
+        this.orderPolis.dobCT = result.tanggal_lahir_ct
+        this.orderPolis.genderCT = result.jenis_kelamin_ct
+        this.orderPolis.premi = result.premi
+        this.orderPolis.manfaat = result.uang_pertanggungan
+        this.orderPolis.product = result.produk
+  
+        this.orderPolis.dobPP = this.setDate(this.orderPolis.dobPP)
+        this.orderPolis.dobPM = this.setDate(this.orderPolis.dobPM)
+        this.orderPolis.dobCT = this.setDate(this.orderPolis.dobCT)
+      })
     })
+  }
+
+  setDate(variable) {
+    let split = variable.split('-')
+    return variable = new NgbDate(parseInt(split[0]), parseInt(split[1]), parseInt(split[2]))
   }
 
   getProvinsi() {
     this.http.getProvinsi().subscribe((res: any) => {
+      this.spinner.hide()
       this.provinsi = res.datas
     })
   }
 
   openModal(content, id) {
     this.modalService.open(content).result.then(() => {
-      if (id == 0) this.deklarasikesehatan = true 
+      if (id == 0) this.deklarasikesehatan = true
       else if (id == 1) this.syaratdanketentuan = true
     })
   }
@@ -101,11 +124,9 @@ export class DataDiriComponent implements OnInit {
   submit() {
     this.orderPolis.nomorTelponPP = this.intNumber + this.nomorPemegangPolis
     this.validateInput()
-    console.log(this.orderPolis)
   }
 
   onResult(res) {
-    console.log('otp result', res)
     let params = {
       hubungan_ct: this.orderPolis.statusCT ? this.orderPolis.statusCT : this.orderPolis.statusCT = '',
       nama_pp: this.orderPolis.namaPP ? this.orderPolis.namaPP : this.orderPolis.namaPP = '',
@@ -114,6 +135,7 @@ export class DataDiriComponent implements OnInit {
       nomor_ponsel_pp: this.orderPolis.nomorTelponPP ? this.orderPolis.nomorTelponPP : this.orderPolis.nomorTelponPP = '',
       email_pp: this.orderPolis.emailPP ? this.orderPolis.emailPP : this.orderPolis.emailPP = '',
       no_ktp_pp: this.orderPolis.nomorKTPPP ? this.orderPolis.nomorKTPPP : this.orderPolis.nomorKTPPP = '',
+      provinsi: this.orderPolis.provinsi ? this.orderPolis.provinsi : this.orderPolis.provinsi = '',
       penerima_manfaat: this.orderPolis.statusPM ? this.orderPolis.statusPM : this.orderPolis.statusPM = '',
       nama_pm: this.orderPolis.namaPM ? this.orderPolis.namaPM : this.orderPolis.namaPM = '',
       no_ktp_pm: this.orderPolis.nomorKTPPM ? this.orderPolis.nomorKTPPM : this.orderPolis.nomorKTPPM = '',
@@ -131,17 +153,38 @@ export class DataDiriComponent implements OnInit {
       produk: this.orderPolis.product ? this.orderPolis.product : this.orderPolis.product = ''
     }
     if (res) {
-      this.http.submitData(params).subscribe((res: any) => {
-        if (res.status == 'ok') {
-          localStorage.setItem('orderID', res.datas[0].id)
-          this.router.navigate(['ringkasan'], {
-            state: { orderID: res.datas[0].id}
-          })
-        }
-      }, err => {
-        console.log(err)
-      })
+      this.spinner.show()
+
+      if (this.orderPolis.id) {
+        this.http.updateData(params, this.orderPolis.id).subscribe((res: any) => {
+          this.spinner.hide()
+          if (res.status == 'ok') {
+            localStorage.setItem('orderID', this.orderPolis.id)
+            this.router.navigate(['ringkasan'], {
+              state: { orderID: this.orderPolis.id }
+            })
+          }
+        }, err => {
+          console.log(err)
+        })
+      } else {
+        this.http.submitData(params).subscribe((res: any) => {
+          this.spinner.hide()
+          if (res.status == 'ok') {
+            localStorage.setItem('orderID', res.datas[0].id)
+            this.router.navigate(['ringkasan'], {
+              state: { orderID: res.datas[0].id }
+            })
+          }
+        }, err => {
+          console.log(err)
+        })
+      }
     }
+  }
+
+  updateData() {
+
   }
 
   validateInput() {
@@ -186,7 +229,19 @@ export class DataDiriComponent implements OnInit {
     } else if (!this.orderPolis.nomorKTPCT) {
       this.openModal2('Silahkan Isi Nomor KTP Calon Tertanggung')
     } else {
-      this.onOtp = true
+      // if (!this.orderPolis.id) {
+        let dobPP = JSON.parse(JSON.stringify(this.orderPolis.dobPP))
+        let dobCT = JSON.parse(JSON.stringify(this.orderPolis.dobCT))
+        let dobPM = JSON.parse(JSON.stringify(this.orderPolis.dobPM))
+
+        this.orderPolis.dobPP = `${dobPP.year}-${dobPP.month}-${dobPP.day}`
+        this.orderPolis.dobCT = `${dobCT.year}-${dobCT.month}-${dobCT.day}`
+        this.orderPolis.dobPM = `${dobPM.year}-${dobPM.month}-${dobPM.day}`
+
+        this.onOtp = true
+      // } else {
+
+      // }
     }
   }
 

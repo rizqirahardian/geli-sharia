@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'
 
 import { NgbDateStruct, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgxSpinnerService } from 'ngx-spinner'
+
 import { ModalDirective } from '../../directives/modal/modal.directive'
 import { HttpService } from '../../services/http/http.service'
 import { OrderPolis } from '../../services/models/models'
@@ -30,10 +32,13 @@ export class ProductsComponent implements OnInit {
   constructor(
     private router: Router,
     private modalService: NgbModal,
-    private http: HttpService
+    private http: HttpService,
+    private spinner: NgxSpinnerService
   ) { }
 
   ngOnInit() {
+    this.spinner.show()
+
     this.orderPolis = new OrderPolis
 
     this.orderPolis.product = history.state.produk
@@ -84,6 +89,8 @@ export class ProductsComponent implements OnInit {
 
   getDataById(id) {
     this.http.getDataById(id).subscribe((res: any) => {
+      this.spinner.hide()
+
       let result = res.datas[0]
       this.orderPolis.statusCT = result.hubungan_ct
       this.orderPolis.namaPP = result.nama_pp
@@ -113,6 +120,7 @@ export class ProductsComponent implements OnInit {
 
   getPremi() {
     this.http.getPremi().subscribe((res: any) => {
+      this.spinner.hide()
       if (res.status == 'ok') {
         let result = res.datas
         result.forEach(obj => {

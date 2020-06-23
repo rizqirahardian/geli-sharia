@@ -41,7 +41,8 @@
                         <p class="mb-0 cnt-label" *ngIf="orderPolis.statusCT != 'Diri Sendiri'">Tanggal Lahir
                             {{orderPolis.statusCT}}</p>
                         <input [(ngModel)]="orderPolis.dobCT" class="form-control" placeholder="yyyy-mm-dd" name="dpCT"
-                            ngbDatepicker #dpCT="ngbDatepicker" (click)="dpCT.toggle()" [minDate]="{year: 1900, month: 1, day: 1}">
+                            ngbDatepicker #dpCT="ngbDatepicker" (click)="dpCT.toggle()" [minDate]="{year: 1900, month: 1, day: 1}"
+                            [value]="orderPolis.dobCT">
                     </div>
                     <div class="form-group col-md-6">
                         <p class="mb-0 cnt-label">Jenis Kelamin</p>
@@ -85,7 +86,8 @@
             <div class="form-group col-md-6">
                 <p class="mb-0 cnt-label">Tanggal Lahir</p>
                 <input [(ngModel)]="orderPolis.dobPP" class="form-control" placeholder="yyyy-mm-dd" name="dpPP"
-                    ngbDatepicker #dpPP="ngbDatepicker" (click)="dpPP.toggle()" [minDate]="{year: 1900, month: 1, day: 1}">
+                    ngbDatepicker #dpPP="ngbDatepicker" (click)="dpPP.toggle()" [minDate]="{year: 1900, month: 1, day: 1}"
+                    [value]="orderPolis.dobPP">
             </div>
             <div class="form-group col-md-6">
                 <p class="mb-0 cnt-label">Jenis Kelamin</p>
@@ -136,7 +138,8 @@
             <div class="form-group col-md-6">
                 <p class="mb-0 cnt-label">Tanggal Lahir Penerima Manfaat</p>
                 <input [(ngModel)]="orderPolis.dobPM" class="form-control mb-4" placeholder="yyyy-mm-dd" name="dp"
-                    ngbDatepicker #dp="ngbDatepicker" (click)="dp.toggle()" [minDate]="{year: 1900, month: 1, day: 1}">
+                    ngbDatepicker #dp="ngbDatepicker" (click)="dp.toggle()" [minDate]="{year: 1900, month: 1, day: 1}"
+                    [value]="orderPolis.dobPM">
             </div>
             <div class="mb-4 form-group col-md-6">
                 <p class="mb-0 cnt-label">Jenis Kelamin Penerima Manfaat</p>
@@ -213,3 +216,7 @@
         <button type="button" class="btn btn-danger" (click)="modal.close('')">OK</button>
     </div>
 </ng-template>
+
+<ngx-spinner bdColor="rgba(100,100,100,0.6)" size="medium" color="#fff" type="ball-clip-rotate">
+    <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>

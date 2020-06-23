@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'
 
+import { NgxSpinnerService } from 'ngx-spinner';
 import { HttpService } from '../../services/http/http.service'
 
 @Component({
@@ -17,10 +18,13 @@ export class RingkasanComponent implements OnInit {
 
   constructor(
     private http: HttpService,
-    private router: Router
+    private router: Router,
+    private spinner: NgxSpinnerService
   ) { }
 
   ngOnInit() {
+    this.spinner.show()
+
     if (history.state.orderID) {
       this.orderID = history.state.orderID
     } else {
@@ -35,6 +39,7 @@ export class RingkasanComponent implements OnInit {
 
   getDataById(id) {
     this.http.getDataById(id).subscribe((res: any) => {
+      this.spinner.hide()
       this.productName = res.datas[0].produk
       this.premi = res.datas[0].premi
       this.manfaat = res.datas[0].uang_pertanggungan

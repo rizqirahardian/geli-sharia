@@ -3,10 +3,10 @@ export class OrderPolis {
     statusCT: string
     namaCT: string
     nomorKTPCT: string
-    dobCT: string
+    dobCT: any
     genderCT: string
     namaPP: string
-    dobPP: string
+    dobPP: any
     genderPP: string
     nomorTelponPP: string
     emailPP:string
@@ -15,7 +15,7 @@ export class OrderPolis {
     statusPM: string
     namaPM: string
     nomorKTPPM: string
-    dobPM: string
+    dobPM: any
     genderPM: string
     namaBank: string
     nomorBank: string
@@ -23,4 +23,19 @@ export class OrderPolis {
     product: string
     premi: string
     manfaat: string
+}
+
+export class Product {
+    benefit: string
+    deskripsi: string
+    kode_produk: string
+    nama_produk: string
+}
+
+export class Manfaat {
+    id: number
+    kode_produk: string
+    manfaat: string
+    pengecualian: string
+    periode: string
 }

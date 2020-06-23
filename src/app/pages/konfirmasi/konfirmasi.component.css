@@ -8,3 +8,11 @@
 .confirmation p{
     color: #1071bd;
 }
+
+.star {
+    font-size: 1.5rem;
+}
+
+.filled {
+    color: #ebd834;
+}
