@@ -27,6 +27,8 @@ export class ProductsComponent implements OnInit {
   manfaat: string
   minPremi: any
   maxPremi: any
+  data: Array<any>
+  rangeOption: string
   manfaatDesc: string
 
   constructor(
@@ -122,14 +124,9 @@ export class ProductsComponent implements OnInit {
     this.http.getPremi().subscribe((res: any) => {
       this.spinner.hide()
       if (res.status == 'ok') {
-        let result = res.datas
-        result.forEach(obj => {
-          if (obj.kode == 'MAX') {
-            this.maxPremi = obj.value
-          } else {
-            this.minPremi = obj.value
-          }
-        })
+        this.data = res.datas
+        this.maxPremi = this.data.length - 1
+        this.data.sort((a, b) => parseFloat(a.value) - parseFloat(b.value))
       }
     })
   }
@@ -170,9 +167,6 @@ export class ProductsComponent implements OnInit {
         produk: this.orderPolis.product
       }
 
-      // this.http.updateData(params, this.orderID).subscribe((res: any) => {
-      //   this.router.navigate(['ringkasan'], { state: { orderID: this.orderID} })
-      // })
       this.http.updateIlustrasi(this.orderID, this.orderPolis.premi, this.orderPolis.manfaat).subscribe((res: any) => {
         if (res.status == 'ok') {
           this.router.navigate(['ringkasan'], { state: { orderID: this.orderID} })
@@ -205,6 +199,11 @@ export class ProductsComponent implements OnInit {
     let ageDifMs = Date.now() - dob.getTime()
     let ageDate = new Date(ageDifMs) // miliseconds from epoch
     return Math.abs(ageDate.getUTCFullYear() - 1970);
+  }
+
+  calculateManfaat(option) {
+    this.orderPolis.premi = this.data[option].value.toString()
+    this.orderPolis.manfaat = this.data[option].up.toString()
   }
 
 }

@@ -14,13 +14,13 @@
                 <div class="form-group col-md-12">
                     <p for="formControlRange" class="text-center mb-0 card-title">Sesuaikan Produk</p>
                     <p class="xs-text text-center mb-0">Kamu dapat menyesuaikan produk dengan kebutuhanmu</p>
-                    <input type="range" class="form-control-range date" min="{{minPremi}}" max="{{maxPremi}}" step="500000"
-                        [(ngModel)]="orderPolis.premi" (ngModelChange)="orderPolis.premi=$event" id="sliderPremi">
+                    <input type="range" class="form-control-range date" min="0" max="{{maxPremi}}" step="1"
+                        [(ngModel)]="rangeOption" (ngModelChange)="calculateManfaat(rangeOption)" id="sliderPremi">
                 </div>
                 <div class="form-group col-md-6">
                     <label>Premi</label>
                     <input type="text" class="form-control" [ngModel]="orderPolis.premi | currency:'IDR'"
-                        [ngModelOptions]="{updateOn:'blur'}" (ngModelChange)="orderPolis.premi=$event" (focus)="onFocusCurrency($event)">
+                        [ngModelOptions]="{updateOn:'blur'}" (ngModelChange)="orderPolis.premi=$event; calculateManfaat(orderPolis.premi)" (focus)="onFocusCurrency($event)">
                     <a class="xs-text">*Premi Tinggi Menyesuaikan Umur</a>
                 </div>
                 <div class="form-group col-md-6">
@@ -30,7 +30,6 @@
                     <a class="xs-text" (click)="openModal()">Lihat Illustrasi</a>
                 </div>
                 <div class="col-md-12 text-center">
-                    <!-- <button class="btn btn-danger" routerLink="/data-diri">Beli</button> -->
                     <button class="btn btn-danger" (click)="buyProduct()">Beli</button>
                 </div>
             </div>
