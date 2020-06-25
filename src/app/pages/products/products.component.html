@@ -14,13 +14,13 @@
                 <div class="form-group col-md-12">
                     <p for="formControlRange" class="text-center mb-0 card-title">Sesuaikan Produk</p>
                     <p class="xs-text text-center mb-0">Kamu dapat menyesuaikan produk dengan kebutuhanmu</p>
-                    <input type="range" class="form-control-range date" min="0" max="{{maxPremi}}" step="1"
-                        [(ngModel)]="rangeOption" (ngModelChange)="calculateManfaat(rangeOption)" id="sliderPremi">
+                    <input type="range" class="form-control-range date" min="0" max="{{range}}" step="1" [(ngModel)]="rangeOption"
+                        (ngModelChange)="calculateManfaat(rangeOption)" id="sliderPremi">
                 </div>
                 <div class="form-group col-md-6">
                     <label>Premi</label>
                     <input type="text" class="form-control" [ngModel]="orderPolis.premi | currency:'IDR'"
-                        [ngModelOptions]="{updateOn:'blur'}" (ngModelChange)="orderPolis.premi=$event; calculateManfaat(orderPolis.premi)" (focus)="onFocusCurrency($event)">
+                    [ngModelOptions]="{updateOn:'blur'}" (ngModelChange)="orderPolis.premi=$event; calculateManfaat(orderPolis.premi)" (focus)="onFocusCurrency($event)">
                     <a class="xs-text">*Premi Tinggi Menyesuaikan Umur</a>
                 </div>
                 <div class="form-group col-md-6">
@@ -49,22 +49,7 @@
             <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
                 <ngb-panel title="Premi">
                     <ng-template ngbPanelContent>
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
-                        3 wolf
-                        moon officia
-                        aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch
-                        3 wolf
-                        moon tempor,
-                        sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil
-                        anim
-                        keffiyeh helvetica,
-                        craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
-                        vice
-                        lomo. Leggings
-                        occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't
-                        heard of
-                        them accusamus
-                        labore sustainable VHS.
+                        <div [innerHtml]="premiDesc"></div>
                     </ng-template>
                 </ngb-panel>
             </ngb-accordion>
@@ -73,22 +58,7 @@
             <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
                 <ngb-panel title="Periode Perlindungan Asuransi">
                     <ng-template ngbPanelContent>
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
-                        3 wolf
-                        moon officia
-                        aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch
-                        3 wolf
-                        moon tempor,
-                        sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil
-                        anim
-                        keffiyeh helvetica,
-                        craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
-                        vice
-                        lomo. Leggings
-                        occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't
-                        heard of
-                        them accusamus
-                        labore sustainable VHS.
+                        <div [innerHtml]="periodeDesc"></div>
                     </ng-template>
                 </ngb-panel>
             </ngb-accordion>
@@ -97,22 +67,7 @@
             <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
                 <ngb-panel title="Pengecualian">
                     <ng-template ngbPanelContent>
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.
-                        3 wolf
-                        moon officia
-                        aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch
-                        3 wolf
-                        moon tempor,
-                        sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil
-                        anim
-                        keffiyeh helvetica,
-                        craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher
-                        vice
-                        lomo. Leggings
-                        occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't
-                        heard of
-                        them accusamus
-                        labore sustainable VHS.
+                        <div [innerHtml]="pengecualianDesc"></div>
                     </ng-template>
                 </ngb-panel>
             </ngb-accordion>

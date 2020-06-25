@@ -22,6 +22,7 @@ export class HttpService {
     private cnf: Config
   ) { }
 
+  // POST METHOD
   submitData(params) {
     let url = this.cnf.URL + '/submit-data'
     return this.http.post(url, JSON.stringify( params ), this.httpOptions).pipe(map(res => res))
@@ -37,6 +38,7 @@ export class HttpService {
     return this.http.post(url, '', this.httpOptions).pipe(map(res => res))
   }
 
+  // GET METHOD
   getDataById(id) {
     let url = this.cnf.URL + '/get-by-id?id=' + id
     return this.http.get(url, this.httpOptions).pipe(map(res => res))
@@ -48,7 +50,6 @@ export class HttpService {
   }
   
   getPremi() {
-    // this.httpOptions.headers = this.httpOptions.headers.append('content-type', 'application/json')
     let url = this.cnf.URL + '/get-premi'
     return this.http.get(url, this.httpOptions).pipe(map(res => res))
   }

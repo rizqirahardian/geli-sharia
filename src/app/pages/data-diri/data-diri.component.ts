@@ -94,7 +94,7 @@ export class DataDiriComponent implements OnInit {
         this.orderPolis.premi = result.premi
         this.orderPolis.manfaat = result.uang_pertanggungan
         this.orderPolis.product = result.produk
-  
+
         this.orderPolis.dobPP = this.setDate(this.orderPolis.dobPP)
         this.orderPolis.dobPM = this.setDate(this.orderPolis.dobPM)
         this.orderPolis.dobCT = this.setDate(this.orderPolis.dobCT)
@@ -183,10 +183,6 @@ export class DataDiriComponent implements OnInit {
     }
   }
 
-  updateData() {
-
-  }
-
   validateInput() {
     if (this.orderPolis.statusCT == 'Diri Sendiri') {
       this.orderPolis.namaPP = this.orderPolis.namaCT
@@ -229,19 +225,15 @@ export class DataDiriComponent implements OnInit {
     } else if (!this.orderPolis.nomorKTPCT) {
       this.openModal2('Silahkan Isi Nomor KTP Calon Tertanggung')
     } else {
-      // if (!this.orderPolis.id) {
-        let dobPP = JSON.parse(JSON.stringify(this.orderPolis.dobPP))
-        let dobCT = JSON.parse(JSON.stringify(this.orderPolis.dobCT))
-        let dobPM = JSON.parse(JSON.stringify(this.orderPolis.dobPM))
+      let dobPP = JSON.parse(JSON.stringify(this.orderPolis.dobPP))
+      let dobCT = JSON.parse(JSON.stringify(this.orderPolis.dobCT))
+      let dobPM = JSON.parse(JSON.stringify(this.orderPolis.dobPM))
 
-        this.orderPolis.dobPP = `${dobPP.year}-${dobPP.month}-${dobPP.day}`
-        this.orderPolis.dobCT = `${dobCT.year}-${dobCT.month}-${dobCT.day}`
-        this.orderPolis.dobPM = `${dobPM.year}-${dobPM.month}-${dobPM.day}`
+      this.orderPolis.dobPP = `${dobPP.year}-${dobPP.month}-${dobPP.day}`
+      this.orderPolis.dobCT = `${dobCT.year}-${dobCT.month}-${dobCT.day}`
+      this.orderPolis.dobPM = `${dobPM.year}-${dobPM.month}-${dobPM.day}`
 
-        this.onOtp = true
-      // } else {
-
-      // }
+      this.onOtp = true
     }
   }
 

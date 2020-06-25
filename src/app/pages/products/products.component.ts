@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router'
 
-import { NgbDateStruct, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NgxSpinnerService } from 'ngx-spinner'
 
 import { ModalDirective } from '../../directives/modal/modal.directive'
@@ -19,17 +19,19 @@ export class ProductsComponent implements OnInit {
   orderID: string
   productID: string
   productName: string
-  model: NgbDateStruct
-  date: {year: number, month: number}
   dob: string
   age: string
   premi: string
   manfaat: string
-  minPremi: any
-  maxPremi: any
+  minPremi: string
+  maxPremi: string
   data: Array<any>
+  range: any
   rangeOption: string
   manfaatDesc: string
+  premiDesc: string
+  periodeDesc: string
+  pengecualianDesc: string
 
   constructor(
     private router: Router,
@@ -50,48 +52,11 @@ export class ProductsComponent implements OnInit {
     } else {
       this.getPremi()
     }
-
-    this.manfaatDesc = `<p><b>Manfaat Meninggal Dunia</b></p>
-    <p>
-        Apabila Tertanggung meninggal dunia sebelum berakhirnya masa asuransi, maka Great Eastern
-        akan
-        membayarkan Uang Pertanggungan dikurangi Manfaat Hidup yang telah dibayarkan (jika ada)
-        kepada
-        Penerima Manfaat.
-    </p>
-    <p>
-        Catatan:
-    </p>
-    <p>
-        Apabila Tertanggung meninggal dunia dalam kurun waktu 2 tahun pertama Polis dan terdapat
-        pernyataan yang tidak diungkap dengan benar/non-disclose oleh Tertanggung dan atau Pemegang
-        Polis maka Manfaat Meninggal Dunia tifak dibayarkan. Premi yang telah dibayarkan dikurangi
-        biaya-biaya(jika ada) akan dikembalikan kepada Penerima Manfaat.
-    </p>
-
-    <p><b>Manfaat Hidup</b></p>
-    <p>
-        Apabila Tertanggung mencapai usia 65(enam puluh lima) tahun, Great Eastern akan membayarkan
-        Manfaat Hidup kepada Pemegang Polis yaitu sejumlah 100%(seratus persen) dari Premi Tunggal.
-    </p>
-    <p>
-        Mafaat Hidup berlaku apabila Tertanggung pada saat Tanggal Mulai Asuransi kurang dari
-        51(lima
-        puluh satu) tahun.
-    </p>
-
-    <p><b>Manfaat Akhir Asuransi</b></p>
-    <p>
-        Apabila Tertanggung masih hidup sampai dengan berakhirnya masa asuransi, maka Great Eastern
-        akan membayarkan Uang Pertanggungan dikurangi dengan Manfaat Hidup yang telah dibayarkan
-        (jika
-        ada) kepada Pemegang Polis.
-    </p>`
   }
 
   getDataById(id) {
     this.http.getDataById(id).subscribe((res: any) => {
-      this.spinner.hide()
+      this.getPremi()
 
       let result = res.datas[0]
       this.orderPolis.statusCT = result.hubungan_ct
@@ -117,17 +82,49 @@ export class ProductsComponent implements OnInit {
       this.orderPolis.premi = result.premi
       this.orderPolis.manfaat = result.uang_pertanggungan
       this.orderPolis.product = result.produk
+    }, (err: any) => {
+      this.spinner.hide()
+      console.error(err)
     })
   }
 
   getPremi() {
     this.http.getPremi().subscribe((res: any) => {
-      this.spinner.hide()
       if (res.status == 'ok') {
+        this.getManfaat()
+
         this.data = res.datas
-        this.maxPremi = this.data.length - 1
+        this.range = this.data.length - 1
         this.data.sort((a, b) => parseFloat(a.value) - parseFloat(b.value))
+
+        this.data.forEach( obj => {
+          if (obj.kode == "MAX") {
+            this.maxPremi = obj.value
+          } else if (obj.kode == "MIN") {
+            this.minPremi = obj.value
+          }
+        })
       }
+    }, (err: any) => {
+      this.spinner.hide()
+      console.error(err)
+    })
+  }
+  
+  getManfaat() {
+    this.http.getManfaat().subscribe((res: any) => {
+      this.spinner.hide()
+      this.manfaatDesc = res.manfaatList[0].manfaat
+      this.pengecualianDesc = res.manfaatList[0].pengecualian
+      this.periodeDesc = res.manfaatList[0].periode
+
+      this.premiDesc = 
+      `Minimum Premi : ${this.minPremi} <br>
+      Maximal Premi : ${this.maxPremi} per jiwa`
+
+    }, (err: any) => {
+      this.spinner.hide()
+      console.error(err)
     })
   }
 
@@ -186,12 +183,6 @@ export class ProductsComponent implements OnInit {
   onFocusCurrency(event) {
     event.target.value = event.target.value.replace(/\D/g,'')
   }
-
-  onInputSlider(event) {
-    this.orderPolis.premi = event.target.value
-    console.log(this.orderPolis.premi)
-    console.log(event.target.value)
-  }
   
   calculateAge(birthday) { // birthday is a date
     let str = `${birthday.year}-${birthday.month}-${birthday.day}`
@@ -204,6 +195,7 @@ export class ProductsComponent implements OnInit {
   calculateManfaat(option) {
     this.orderPolis.premi = this.data[option].value.toString()
     this.orderPolis.manfaat = this.data[option].up.toString()
+    console.log(this.orderPolis.premi)
   }
 
 }
