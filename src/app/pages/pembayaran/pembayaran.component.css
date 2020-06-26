@@ -23,3 +23,13 @@
     margin: 20px 0px !important;
     border: none !important;
   }
+
+.bank-icon {
+    width: 100%;
+    height: 60px;
+}
+
+.payment-logo {
+    width: 100%;
+    height: 150px;
+}
