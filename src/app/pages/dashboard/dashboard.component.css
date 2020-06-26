@@ -27,3 +27,70 @@
     margin-right: auto;
     width: 10%;
 }
+
+.img-cntent{
+    text-align: center;
+}
+
+.container{
+    position: relative;
+}
+
+
+.banner-header{
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url(/assets/img/banner.jpg);
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #ffffff87;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 15px;
+}
+
+.banner-header img{ 
+    width: 100%;
+    position: absolute;
+
+}
+
+.banner-content h4{
+    color: white;
+    padding: 100px 20px 0px;
+}
+
+.banner-content{
+position: relative;
+}
+
+.banner-content .menu{
+padding: 20px;
+}
+.banner-content .menu .card .card-body h5{
+font-size: 15px;
+}
+
+.img-menu{
+    
+}
+
+.img-menu img{
+    position: relative;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.menu-style{
+    border-radius: 20px;
+    padding: 10px;
+}

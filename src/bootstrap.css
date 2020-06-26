@@ -10342,4 +10342,9 @@ a.text-dark:hover, a.text-dark:focus {
 .agree-otp{
   color: #03A9F4;
 }
+
+.no-pad{
+  padding: 0px !important;
+}
+
 /*# sourceMappingURL=bootstrap.css.map */

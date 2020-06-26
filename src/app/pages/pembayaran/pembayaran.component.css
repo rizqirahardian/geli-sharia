@@ -30,6 +30,11 @@
 }
 
 .payment-logo {
+    text-align: center;
+}
+
+.payment-logo img{
     width: 100%;
-    height: 150px;
+    margin: auto;
+    width: 60%;
 }
