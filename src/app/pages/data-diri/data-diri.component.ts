@@ -8,6 +8,8 @@ import { OrderPolis } from '../../services/models/models'
 import { HttpService } from '../../services/http/http.service'
 import { Modal2Directive } from '../../directives/modal2/modal2.directive'
 import { Config } from 'src/app/config';
+import { interval } from 'rxjs';
+import { TimeInterval } from 'rxjs/internal/operators/timeInterval';
 
 @Component({
   selector: 'app-data-diri',
@@ -27,7 +29,14 @@ export class DataDiriComponent implements OnInit {
   deklarasikesehatan: boolean
   syaratdanketentuan: boolean
   onOtp: boolean
+  display: any
   nullField: string
+  resendButton: boolean
+  timer: any
+  duration: any
+  minutes: any
+  seconds: any
+  interval: any
 
   @ViewChild('validasi', { static: false }) modalContent: TemplateRef<any>
 
@@ -39,6 +48,7 @@ export class DataDiriComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    // for testing
     this.spinner.show()
 
     this.orderPolis = new OrderPolis
@@ -56,6 +66,10 @@ export class DataDiriComponent implements OnInit {
     } else {
       this.getProvinsi()
     }
+  }
+
+  updateCount(): void {
+    this.display = Math.random()
   }
 
   getDataById(id) {
@@ -183,6 +197,13 @@ export class DataDiriComponent implements OnInit {
     }
   }
 
+  onResend(res) {
+    if (res) {
+      this.duration = 10
+      this.interval = setInterval(()=> this.startTimer(), 1000);
+    }
+  }
+
   validateInput() {
     if (this.orderPolis.statusCT == 'Diri Sendiri') {
       this.orderPolis.namaPP = this.orderPolis.namaCT
@@ -225,15 +246,22 @@ export class DataDiriComponent implements OnInit {
     } else if (!this.orderPolis.nomorKTPCT) {
       this.openModal2('Silahkan Isi Nomor KTP Calon Tertanggung')
     } else {
-      let dobPP = JSON.parse(JSON.stringify(this.orderPolis.dobPP))
-      let dobCT = JSON.parse(JSON.stringify(this.orderPolis.dobCT))
-      let dobPM = JSON.parse(JSON.stringify(this.orderPolis.dobPM))
+      if (!this.deklarasikesehatan || !this.syaratdanketentuan) {
+        this.openModal2('Harap Menyetujui Deklarasi Kesehatan dan Syarat Dan Ketentuan')
+      } else {
+        let dobPP = JSON.parse(JSON.stringify(this.orderPolis.dobPP))
+        let dobCT = JSON.parse(JSON.stringify(this.orderPolis.dobCT))
+        let dobPM = JSON.parse(JSON.stringify(this.orderPolis.dobPM))
+  
+        this.orderPolis.dobPP = `${dobPP.year}-${dobPP.month}-${dobPP.day}`
+        this.orderPolis.dobCT = `${dobCT.year}-${dobCT.month}-${dobCT.day}`
+        this.orderPolis.dobPM = `${dobPM.year}-${dobPM.month}-${dobPM.day}`
+  
+        this.onOtp = true
 
-      this.orderPolis.dobPP = `${dobPP.year}-${dobPP.month}-${dobPP.day}`
-      this.orderPolis.dobCT = `${dobCT.year}-${dobCT.month}-${dobCT.day}`
-      this.orderPolis.dobPM = `${dobPM.year}-${dobPM.month}-${dobPM.day}`
-
-      this.onOtp = true
+        this.duration = 10
+        this.interval = setInterval(()=> this.startTimer(), 1000);
+      }
     }
   }
 
@@ -245,6 +273,28 @@ export class DataDiriComponent implements OnInit {
   openModal2(nullField) {
     const modalRef = this.modalService.open(Modal2Directive)
     modalRef.componentInstance.nullField = nullField
+  }
+
+  startTimer() {
+    this.resendButton = false
+    this.timer = this.duration, this.minutes, this.seconds;
+
+    this.minutes = parseInt(this.timer);
+    this.seconds = parseInt(this.timer);
+
+    this.minutes = this.minutes / 60, 10
+    this.seconds = this.seconds % 60, 10
+
+    this.minutes = this.minutes < 10 ? "0" + Math.floor(this.minutes) : Math.floor(this.minutes);
+    this.seconds = this.seconds < 10 ? "0" + Math.floor(this.seconds) : Math.floor(this.seconds);
+    
+    this.display = this.minutes + ":" + this.seconds;
+
+    if (--this.duration < 0) {
+      this.timer = this.duration;
+      this.resendButton = true
+      clearInterval(this.interval)
+    }
   }
 
 }

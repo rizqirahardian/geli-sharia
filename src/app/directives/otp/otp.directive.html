@@ -8,6 +8,9 @@
     </div>
     <div class="text-center">
         <span>Tidak menerima Kode ?</span><br>
-        <span class="agree-otp">Kirim ulang kode OTP dalam</span><span> 01:59</span>
+        <span class="agree-otp">Kirim ulang kode OTP dalam </span>
+        <!-- <b><span *ngIf="!resendButton" id="timer"></span></b> -->
+        <b><span *ngIf="resendButton" (click)="resendOtp(true)">Resend OTP</span></b>
+        <b><span *ngIf="!resendButton">{{display}}</span></b>
     </div>
 </div>

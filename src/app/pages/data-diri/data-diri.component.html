@@ -41,8 +41,8 @@
                         <p class="mb-0 cnt-label" *ngIf="orderPolis.statusCT != 'Diri Sendiri'">Tanggal Lahir
                             {{orderPolis.statusCT}}</p>
                         <input [(ngModel)]="orderPolis.dobCT" class="form-control" placeholder="yyyy-mm-dd" name="dpCT"
-                            ngbDatepicker #dpCT="ngbDatepicker" (click)="dpCT.toggle()" [minDate]="{year: 1900, month: 1, day: 1}"
-                            [value]="orderPolis.dobCT">
+                            ngbDatepicker #dpCT="ngbDatepicker" (click)="dpCT.toggle()" [minDate]="{year: 1900, month: 1, day: 1}">
+                            <!-- [value]="orderPolis.dobCT"> -->
                     </div>
                     <div class="form-group col-md-6">
                         <p class="mb-0 cnt-label">Jenis Kelamin</p>
@@ -86,8 +86,8 @@
             <div class="form-group col-md-6">
                 <p class="mb-0 cnt-label">Tanggal Lahir</p>
                 <input [(ngModel)]="orderPolis.dobPP" class="form-control" placeholder="yyyy-mm-dd" name="dpPP"
-                    ngbDatepicker #dpPP="ngbDatepicker" (click)="dpPP.toggle()" [minDate]="{year: 1900, month: 1, day: 1}"
-                    [value]="orderPolis.dobPP">
+                    ngbDatepicker #dpPP="ngbDatepicker" (click)="dpPP.toggle()" [minDate]="{year: 1900, month: 1, day: 1}">
+                    <!-- [value]="orderPolis.dobPP"> -->
             </div>
             <div class="form-group col-md-6">
                 <p class="mb-0 cnt-label">Jenis Kelamin</p>
@@ -138,8 +138,8 @@
             <div class="form-group col-md-6">
                 <p class="mb-0 cnt-label">Tanggal Lahir Penerima Manfaat</p>
                 <input [(ngModel)]="orderPolis.dobPM" class="form-control mb-4" placeholder="yyyy-mm-dd" name="dp"
-                    ngbDatepicker #dp="ngbDatepicker" (click)="dp.toggle()" [minDate]="{year: 1900, month: 1, day: 1}"
-                    [value]="orderPolis.dobPM">
+                    ngbDatepicker #dp="ngbDatepicker" (click)="dp.toggle()" [minDate]="{year: 1900, month: 1, day: 1}">
+                    <!-- [value]="orderPolis.dobPM"> -->
             </div>
             <div class="mb-4 form-group col-md-6">
                 <p class="mb-0 cnt-label">Jenis Kelamin Penerima Manfaat</p>
@@ -177,7 +177,7 @@
             </div>
         </div>
     </div>
-    <app-otp *ngIf="onOtp" (onOtpResult)="onResult($event)"></app-otp>
+    <app-otp *ngIf="onOtp" [(display)]="display" [(resendButton)]="resendButton" (onOtpResult)="onResult($event)" (onResendOtp)="onResend($event)"></app-otp>
 </div>
 
 <!-- modal template -->

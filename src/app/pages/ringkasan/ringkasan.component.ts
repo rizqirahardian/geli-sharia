@@ -30,9 +30,6 @@ export class RingkasanComponent implements OnInit {
     } else {
       this.orderID = localStorage.getItem('orderID')
     }
-    
-    // for development only
-    // this.orderID = '1'
 
     this.getDataById(this.orderID)
   }
