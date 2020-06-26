@@ -8,8 +8,6 @@ import { OrderPolis } from '../../services/models/models'
 import { HttpService } from '../../services/http/http.service'
 import { Modal2Directive } from '../../directives/modal2/modal2.directive'
 import { Config } from 'src/app/config';
-import { interval } from 'rxjs';
-import { TimeInterval } from 'rxjs/internal/operators/timeInterval';
 
 @Component({
   selector: 'app-data-diri',
@@ -66,10 +64,6 @@ export class DataDiriComponent implements OnInit {
     } else {
       this.getProvinsi()
     }
-  }
-
-  updateCount(): void {
-    this.display = Math.random()
   }
 
   getDataById(id) {

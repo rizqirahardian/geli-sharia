@@ -1,8 +1,22 @@
 <div class="container mt-4">
     <h4 class="mb-4">Asuransi Menjadi Mudah dan Terjangkau</h4>
-    <div class="d-flex">
-        <button type="button" class="btn btn-light btn-block h-100 mt-0 mr-2" (click)="goToProduct('Great Pro Assurance')">Great Pro Assurance</button>
-        <button type="button" class="btn btn-light btn-block h-100 mt-0 ml-2" (click)="goToProduct('Great Saver Assurance')">Great Saver Assurance</button>
+    <div class="row col-12">
+        <div class="col-6">
+            <div class="card" (click)="goToProduct('Great Pro Assurance')">
+                <img src="../../../assets/img/security.png" class="card-img-top img-center my-2" alt="..." style="width: 50%">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Great Pro Assurance</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card" (click)="goToProduct('Great Saver Assurance')">
+                <img src="../../../assets/img/security.png" class="card-img-top img-center my-2" alt="..." style="width: 50%">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Great Saver Assurance</h5>
+                </div>
+            </div>
+        </div>
     </div>
     <hr>
     <pre></pre>
@@ -21,7 +35,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-4">
-                                    <b class="card-title">Gambar</b>
+                                    <img src="../../../assets/img/money-vector.png" class="card-img-top" alt="...">
                                 </div>
                                 <div class="col-8">
                                     <b class="sm-text card-title">Pilihan produk yang lengkap</b>
@@ -39,7 +53,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-4">
-                                    <b class="card-title">Gambar</b>
+                                    <img src="../../../assets/img/money-vector.png" class="card-img-top" alt="...">
                                 </div>
                                 <div class="col-8">
                                     <b class="sm-text card-title">Harga produk yang terjangkau</b>
