@@ -21,11 +21,11 @@
                     <div class="data-asurance">
                         <div class="asurance-item">
                             <p>Premi</p>
-                            <span>{{premi}}</span>
+                            <span>{{premi | currency:'IDR'}}</span>
                         </div>
                         <div class="asurance-item">
                             <p>Manfaat</p>
-                            <span>{{manfaat}}</span>
+                            <span>{{manfaat | currency:'IDR'}}</span>
                         </div>
                         <div class="text-center">
                             <button class="btn btn-danger" (click)="goToProduct()">Ubah</button>
@@ -43,7 +43,7 @@
                 <div class="card-body must-pay">
                     <span>Pembayaran</span><br>
                     <label>Premi yang harus kamu bayar :</label>
-                    <p>{{premi}}</p>
+                    <p>{{premi | currency:'IDR'}}</p>
                 </div>
             </div>
             <div class="card">

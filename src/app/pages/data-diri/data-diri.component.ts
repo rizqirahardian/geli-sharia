@@ -135,6 +135,9 @@ export class DataDiriComponent implements OnInit {
   }
 
   onResult(res) {
+    this.resendButton = true
+    clearInterval(this.interval)
+
     let params = {
       hubungan_ct: this.orderPolis.statusCT ? this.orderPolis.statusCT : this.orderPolis.statusCT = '',
       nama_pp: this.orderPolis.namaPP ? this.orderPolis.namaPP : this.orderPolis.namaPP = '',
