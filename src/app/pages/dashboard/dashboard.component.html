@@ -3,19 +3,11 @@
         <div class="banner-content">
             <h4 class="mb-4">Asuransi Menjadi Mudah dan Terjangkau</h4>
             <div class="row menu">
-                <div class="col-6">
-                    <div class="card img-menu" (click)="goToProduct('Great Pro Assurance')">
+                <div class="col-6" *ngFor="let product of products">
+                    <div class="card img-menu" (click)="goToProduct(product.nama_produk)">
                         <img src="../../../assets/img/security.png" class="card-img-top my-2" alt="...">
                         <div class="card-body menu-style">
-                            <h5 class="card-title text-center">Great Pro Assurance</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="card img-menu" (click)="goToProduct('Great Saver Assurance')">
-                        <img src="../../../assets/img/security.png" class="card-img-top my-2" alt="...">
-                        <div class="card-body  menu-style">
-                            <h5 class="card-title text-center">Great Saver Assurance</h5>
+                            <h5 class="card-title text-center">{{product.nama_produk}}</h5>
                         </div>
                     </div>
                 </div>
