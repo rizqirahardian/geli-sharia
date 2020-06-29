@@ -25,9 +25,13 @@
   }
 
 .bank-icon {
-    width: 100%;
-    height: 60px;
+    text-align: center
 }
+
+.bank-icon img{
+    width: 100%;
+}
+
 
 .payment-logo {
     text-align: center;

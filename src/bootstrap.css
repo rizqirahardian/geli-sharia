@@ -10347,4 +10347,7 @@ a.text-dark:hover, a.text-dark:focus {
   padding: 0px !important;
 }
 
+.btn{
+    min-width: 100px;
+}
 /*# sourceMappingURL=bootstrap.css.map */
