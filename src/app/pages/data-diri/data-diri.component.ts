@@ -35,6 +35,8 @@ export class DataDiriComponent implements OnInit {
   minutes: any
   seconds: any
   interval: any
+  disclaimer: string
+  syarat: string
 
   @ViewChild('validasi', { static: false }) modalContent: TemplateRef<any>
 
@@ -71,6 +73,8 @@ export class DataDiriComponent implements OnInit {
       this.provinsi = res.datas
       this.http.getDataById(id).subscribe((res: any) => {
         this.spinner.hide()
+
+        this.getDisclaimer()
 
         let result = res.datas[0]
         if (result.nomor_ponsel) {
@@ -119,6 +123,14 @@ export class DataDiriComponent implements OnInit {
     this.http.getProvinsi().subscribe((res: any) => {
       this.spinner.hide()
       this.provinsi = res.datas
+      this.getDisclaimer()
+    })
+  }
+
+  getDisclaimer() {
+    this.http.getDisclaimer().subscribe((res: any) => {
+      this.disclaimer = res.datas[0].deklarasi_kesehatan
+      this.syarat = res.datas[0].syarat_ketentuan
     })
   }
 

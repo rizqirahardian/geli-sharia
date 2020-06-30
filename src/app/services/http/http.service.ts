@@ -63,4 +63,9 @@ export class HttpService {
     let url = this.cnf.URL + '/get-produk'
     return this.http.get(url, this.httpOptions).pipe(map(res => res))
   }
+
+  getDisclaimer() {
+    let url = this.cnf.URL + '/get-disclaimer'
+    return this.http.get(url, this.httpOptions).pipe(map(res => res))
+  }
 }
