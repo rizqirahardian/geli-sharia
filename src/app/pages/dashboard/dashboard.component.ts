@@ -29,8 +29,8 @@ export class DashboardComponent implements OnInit {
     })
   }
 
-  goToProduct(str) {
-    this.router.navigate([`product`], { state: { produk: str } })
+  goToProduct(name, desc) {
+    this.router.navigate([`product`], { state: { produk: name, deskripsi: desc } })
   }
 
 }

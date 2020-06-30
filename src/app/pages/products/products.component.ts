@@ -32,6 +32,7 @@ export class ProductsComponent implements OnInit {
   premiDesc: string
   periodeDesc: string
   pengecualianDesc: string
+  productDesc: string
 
   constructor(
     private router: Router,
@@ -47,6 +48,7 @@ export class ProductsComponent implements OnInit {
 
     this.orderPolis.product = history.state.produk
     this.orderID = history.state.id
+    this.productDesc = history.state.deskripsi
     if (this.orderID) {
       this.getDataById(this.orderID)
     } else {
