@@ -3,7 +3,7 @@
         width: 40% !important;
     }
     .img-menu img{
-        width: 20% !important;
+        width: 15% !important;
     }
     .brand-logo {
         display: block;
@@ -25,7 +25,7 @@
         width: 60% !important;
     }
     .img-menu img{
-        width: 30% !important;
+        width: 20% !important;
     }
     .brand-logo {
         display: block;
@@ -64,7 +64,8 @@
         width: 100% !important;
     }
     .img-menu img{
-        width: 30% !important;
+        width: 40% !important;
+        margin-bottom: 0px !important;
     }
     .brand-logo {
         display: block;

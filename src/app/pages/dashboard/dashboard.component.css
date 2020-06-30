@@ -73,7 +73,8 @@ position: relative;
 }
 
 .banner-content .menu{
-padding: 20px;
+    padding: 20px 5px;
+    margin: 0px;
 }
 .banner-content .menu .card .card-body h5{
 font-size: 15px;
