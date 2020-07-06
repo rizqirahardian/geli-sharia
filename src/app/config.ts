@@ -7,7 +7,7 @@ import * as CryptoJS from 'crypto-js';
 export class Config {
 
     // URL
-    URL: string = 'https://2c3985a72602.ngrok.io/geli-service-api'
+    URL: string = 'https://50a54c5a5d0b.ngrok.io/geli-service-api'
     // URL: string = 'http://35.188.119.199:8082'
     // URL: string = 'http://35.188.119.199:8080'
     // URL: string = 'http://35.189.175.231:8082'
